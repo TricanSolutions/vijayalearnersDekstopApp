@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6ba402b0-eaea-43f0-9f23-36468cef876d">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="682"/>
+	<parameter name="nic" class="java.lang.Object"/>
+	<parameter name="name" class="java.lang.Object"/>
+	<parameter name="dob" class="java.lang.Object"/>
+	<parameter name="sex" class="java.lang.Object"/>
+	<parameter name="adress" class="java.lang.Object"/>
+	<parameter name="vclass" class="java.lang.Object"/>
+	<parameter name="divisionals" class="java.lang.Object"/>
+	<parameter name="police" class="java.lang.Object"/>
+	<parameter name="oldlicenNO" class="java.lang.Object"/>
+	<parameter name="oldlicenIssuedate" class="java.lang.Object"/>
+	<parameter name="oldlicenceVclass" class="java.lang.Object"/>
+	<parameter name="admissionno" class="java.lang.Object"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="112" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="631d8529-44dd-468c-9d7f-675998bff573" x="0" y="27" width="555" height="25"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Calibri" size="18" isBold="false"/>
+				</textElement>
+				<text><![CDATA[APPLICATION FOR SRI LANKA DRIVING LICENCE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="48abce72-fa91-481d-826d-3fb3537090e7" x="0" y="83" width="555" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[38/2, Kandy Road, Kurunegala - TP : 037-222 39 69]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="07a16ec5-a2b9-450d-bc55-8d2cb7b2cd48" x="0" y="63" width="555" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="16" isBold="false"/>
+				</textElement>
+				<text><![CDATA[VIJAYA LEARNERS (DS-31)]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="41" splitType="Stretch">
+			<line>
+				<reportElement uuid="7e344496-a503-4ad6-992b-ce3f00f11e46" x="4" y="2" width="551" height="1"/>
+			</line>
+			<textField>
+				<reportElement uuid="895dc012-f28e-4a90-aa6d-32ea152829b1" x="464" y="4" width="91" height="20" forecolor="#0000CC"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$P{admissionno}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="ee296a25-771a-4d6d-8e17-a9bb3301cde5" x="391" y="6" width="73" height="20"/>
+				<textElement/>
+				<text><![CDATA[Admission No :]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="560" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="fb83fa6d-0e97-48c3-b628-6a5d922952e0" x="40" y="27" width="48" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="12" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[ID Type :]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="1d725cdf-e99f-4cf9-8dfd-3c97595498aa" x="114" y="27" width="18" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="e84aa5a0-0968-45a4-ba79-415c1c26a236" x="132" y="27" width="30" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<text><![CDATA[NIC]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="eafb722b-0f12-43dd-aad0-6c1eccd3d6fd" x="182" y="27" width="18" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="28f0616a-7f8b-4a03-af10-8f2ba9ccfa9e" x="200" y="27" width="70" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[  SL Passport]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="fdc419fe-63a7-4366-b427-e5e0d2b26396" x="288" y="28" width="18" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="fb244cfe-1004-4623-9ac1-9acf3d05addc" x="307" y="28" width="95" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<text><![CDATA[ Foreign Passport]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="4d109383-ea9c-443f-b3cc-8d27f2fe49c2" x="407" y="28" width="18" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="ab581b74-a5bc-484a-89a4-dafa5494fade" x="426" y="28" width="92" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<text><![CDATA[  Diplomatic Passport]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e6518a9f-37d4-4dbd-96d2-e45489d39834" x="40" y="59" width="113" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="12" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[NIC/Passport No          :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="159f1b5e-a54e-4f2a-80af-96bc917e2065" x="40" y="89" width="113" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="12" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Name                             :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c4f8e579-c9f3-4a9e-a3de-35ed0a8b3250" x="40" y="146" width="113" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="12" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Date of Birth                :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3978c474-de7e-4b50-9de4-be6af12c7943" x="40" y="176" width="113" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="12" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Sex                                 :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="71c0f886-c9b9-4cb5-bb89-edbe38cd1305" x="40" y="206" width="113" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="12" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Adress                           :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3ccfb93c-b770-4649-8e17-0fb5db2865db" x="40" y="282" width="113" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="12" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Vehicle Class                :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ec043a4f-52f7-4925-9b1a-ea3be5759f64" x="40" y="312" width="113" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="12" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Divisional Secretariat :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3cc2597e-61da-49a2-ba1a-4f2109065f8c" x="40" y="342" width="113" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="12" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Police Station              :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="36e73331-f768-4f89-9eb9-28fdb25fcaea" x="40" y="372" width="113" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="12" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Old Licence No            :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a1578aab-e5b7-4378-a234-6586ea557b1b" x="40" y="402" width="113" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="11" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Old Licence Issue Date  :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d7fb66c4-dfba-4b17-86ab-82a173918d98" x="40" y="432" width="113" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="12" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Old Licence V Class     :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="fd04c3f1-b8ec-4ea4-8b17-2af79c15223f" x="414" y="530" width="113" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="12" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Applicant's Signature ]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="7c5f8067-d929-4e74-9259-65ec5ac86f43" x="159" y="59" width="100" height="20" forecolor="#0000CC"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$P{nic}]]></textFieldExpression>
+			</textField>
+			<textField pattern="">
+				<reportElement uuid="99701e1f-01c5-47ee-9ba7-f12a42cf6d46" mode="Transparent" x="159" y="89" width="384" height="55" forecolor="#0000CC"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Calibri" size="12" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$P{name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c0d0e73f-957b-4225-af37-b75c701c9d1f" x="159" y="146" width="100" height="20" forecolor="#0000CC"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$P{dob}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="5a8c7bf8-366b-468e-8d01-4f563c1d8538" x="159" y="176" width="100" height="20" forecolor="#0000CC"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$P{sex}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="45287319-38b0-463c-a8d9-2c8a371d3155" x="159" y="206" width="384" height="55" forecolor="#0000CC"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$P{adress}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e4ac4842-19f5-4a42-ab11-22786f2a4612" x="159" y="282" width="100" height="20" forecolor="#0000CC"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="13" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$P{vclass}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="ae5646a0-bfb7-4c75-860d-a0cad73d03ce" x="159" y="312" width="169" height="20" forecolor="#0000CC"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$P{divisionals}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="be6cd648-f669-4e22-89e4-daf227c1e546" x="159" y="342" width="169" height="20" forecolor="#0000CC"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$P{police}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="1c498e21-91b3-45ad-9670-a3707ba09c69" x="159" y="372" width="100" height="20" forecolor="#0000CC"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$P{oldlicenNO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="11532c2b-5d94-4a33-bcd9-c17ae58d9aaf" x="159" y="402" width="100" height="20" forecolor="#0000CC"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$P{oldlicenIssuedate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="36f45037-bc6b-4e37-807c-5307c4f69f92" x="159" y="432" width="100" height="20" forecolor="#0000CC"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$P{oldlicenceVclass}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="46e1ba2c-0a72-4562-8e3a-9a9841f4777e" x="414" y="510" width="113" height="20"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[................................................]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<pageFooter>
+		<band height="52" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="37107a4b-8596-4991-b0ec-e79dca9bce28" x="0" y="31" width="555" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[System by Trican Solutions(0712470399)]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>
