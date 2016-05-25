@@ -34,6 +34,7 @@ public class downPayment extends javax.swing.JFrame {
         txtadmissionno.grabFocus();
         loadinvoiceno();
         setExtendedState(MAXIMIZED_BOTH);
+        checkupdate();
 
     }
 
@@ -49,6 +50,7 @@ public class downPayment extends javax.swing.JFrame {
         loadinvoiceno();
         loadintroducer();
         loadintroducerdiscount();
+        checkupdate();
 
     }
     int downpayid = 0;
@@ -88,7 +90,7 @@ public class downPayment extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         txtclasses = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
+        lblUpdatefullamount = new javax.swing.JLabel();
         txtUpdateFullAmount = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -96,6 +98,7 @@ public class downPayment extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         txtintroducerdiscount = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
+        chkUpdate = new javax.swing.JCheckBox();
         jPanel3 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         cmbreasonsecond = new javax.swing.JComboBox();
@@ -244,7 +247,7 @@ public class downPayment extends javax.swing.JFrame {
 
         jLabel6.setText("Reason for Pay");
 
-        jLabel19.setText("Update Full Amount");
+        lblUpdatefullamount.setText("Update Full Amount");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -279,7 +282,7 @@ public class downPayment extends javax.swing.JFrame {
                                     .addComponent(cmbreason, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtdate, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(jLabel19)
+                                .addComponent(lblUpdatefullamount)
                                 .addGap(18, 18, 18)
                                 .addComponent(txtUpdateFullAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -318,7 +321,7 @@ public class downPayment extends javax.swing.JFrame {
                     .addComponent(cmbpaymentcategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel19)
+                    .addComponent(lblUpdatefullamount)
                     .addComponent(txtUpdateFullAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(93, 93, 93))
         );
@@ -382,6 +385,12 @@ public class downPayment extends javax.swing.JFrame {
             }
         });
 
+        chkUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkUpdateActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -390,6 +399,8 @@ public class downPayment extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(chkUpdate)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1)
@@ -427,7 +438,8 @@ public class downPayment extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton3))
+                    .addComponent(jButton3)
+                    .addComponent(chkUpdate))
                 .addContainerGap())
         );
 
@@ -758,48 +770,70 @@ public class downPayment extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
-        int down_id = 0;
-        int total = Integer.parseInt(txttotal.getText());
-        int updatetotal = Integer.parseInt(txtUpdateFullAmount.getText());
-        int balance = Integer.parseInt(txtbalance.getText());
-        int balance2 =0;
-        int dif = 0;
-        try {
-            ResultSet rs = model.db.getData("SELECT\n"
-                    + "downpayment.id\n"
-                    + "FROM\n"
-                    + "downpayment\n"
-                    + "WHERE\n"
-                    + "downpayment.admissonno = '" + txtadmissionno.getText() + "'");
+        //pradeep
+        if (txtadmissionno.getText().isEmpty()) {
+            com.Messages.errorjoption("Enter Admission No!");
+            txtadmissionno.grabFocus();
+        } else if (txtUpdateFullAmount.getText().isEmpty()) {
+            com.Messages.errorjoption("Enter New full amount!");
+            txtUpdateFullAmount.grabFocus();
+        } else if (userstatus.LodUser.equals("pradeep")) {
 
-            if (rs.next()) {
-                down_id = rs.getInt(1);
+            int down_id = 0;
+            double total = Double.parseDouble(txttotsecond.getText().trim());
+            double updatetotal = Double.parseDouble(txtUpdateFullAmount.getText().trim());
+            double balance = Double.parseDouble(txtbalance.getText().trim());
+            // int balance2 = 0;
+            double dif = 0;
+            try {
+                ResultSet rs = model.db.getData("SELECT\n"
+                        + "downpayment.id\n"
+                        + "FROM\n"
+                        + "downpayment\n"
+                        + "WHERE\n"
+                        + "downpayment.admissonno = '" + txtadmissionno.getText() + "'");
 
+                if (rs.next()) {
+                    down_id = rs.getInt(1);
+
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        try {
 
             if (updatetotal > total) {
-                dif = updatetotal - balance;
-                System.out.println(dif);
-                balance2 = balance + dif;
-                System.out.println("balance"+balance2);
+                dif = updatetotal - total;
+
+                try {
+                    model.db.putData("update downpayment set total='" + updatetotal + "' , balance= balance + '" + dif + "' where id= '" + down_id + "'    ");
+                    com.Messages.normaljoption("Amount Updated!");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
             } else {
-                balance2 = balance - dif;
+                try {
+                    model.db.putData("update downpayment set total='" + updatetotal + "', balance= balance - '" + dif + "' where id= '" + down_id + "'    ");
+                    com.Messages.normaljoption("Amount Updated!");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
             }
-            model.db.putData("update downpayment set total='" + updatetotal + "',balance= '" + balance2 + "' where id= '" + down_id + "'    ");
-            com.Messages.normaljoption("Amount Updated!");
-        } catch (Exception e) {
-            e.printStackTrace();
+            txtUpdateFullAmount.setText("");
+
+        } else {
+            com.Messages.errorjoption("You are not a admin!");
+
         }
 
 
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void chkUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkUpdateActionPerformed
+        checkupdate();
+    }//GEN-LAST:event_chkUpdateActionPerformed
 
     /**
      * @param args the command line arguments
@@ -837,6 +871,7 @@ public class downPayment extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox chkUpdate;
     private javax.swing.JComboBox cmbpaymentcategory;
     private javax.swing.JComboBox cmbpaymentcatsecond;
     private javax.swing.JComboBox cmbreason;
@@ -854,7 +889,6 @@ public class downPayment extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -871,6 +905,7 @@ public class downPayment extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lblUpdatefullamount;
     private javax.swing.JLabel lblstatus;
     private javax.swing.JTable tbl;
     private javax.swing.JTextField txtUpdateFullAmount;
@@ -1355,6 +1390,20 @@ public class downPayment extends javax.swing.JFrame {
 
         }
         if (evt.getKeyCode() == 118) {
+
+        }
+    }
+
+    private void checkupdate() {
+        if (chkUpdate.isSelected()) {
+            lblUpdatefullamount.setEnabled(true);
+            txtUpdateFullAmount.setEnabled(true);
+            jButton3.setEnabled(true);
+        } else {
+            lblUpdatefullamount.setEnabled(false);
+            txtUpdateFullAmount.setEnabled(false);
+            jButton3.setEnabled(false);
+            txtUpdateFullAmount.setText("");
 
         }
     }
