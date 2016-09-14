@@ -109,6 +109,8 @@ public class customerRegisternew extends javax.swing.JDialog {
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         txtnamewithinitials = new javax.swing.JTextField();
+        jLabel22 = new javax.swing.JLabel();
+        txtNote = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         txtDivisionalSecretariat = new javax.swing.JTextField();
@@ -388,10 +390,10 @@ public class customerRegisternew extends javax.swing.JDialog {
             }
         });
         txtname.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 txtnameInputMethodTextChanged(evt);
+            }
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
         txtname.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -454,6 +456,14 @@ public class customerRegisternew extends javax.swing.JDialog {
             }
         });
 
+        jLabel22.setText("Note");
+
+        txtNote.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNoteKeyPressed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -467,7 +477,7 @@ public class customerRegisternew extends javax.swing.JDialog {
                     .addComponent(jLabel14)
                     .addComponent(jLabel4))
                 .addGap(26, 26, 26)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(txtdob, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -503,9 +513,13 @@ public class customerRegisternew extends javax.swing.JDialog {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel12)
                         .addGap(18, 18, 18)
-                        .addComponent(txtbarcode, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtbarcode, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel22)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtNote))
                     .addComponent(txtvehicleclass, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(121, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -517,7 +531,9 @@ public class customerRegisternew extends javax.swing.JDialog {
                     .addComponent(jLabel7)
                     .addComponent(txtadmissiono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12)
-                    .addComponent(txtbarcode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtbarcode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel22)
+                    .addComponent(txtNote, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
@@ -794,7 +810,7 @@ public class customerRegisternew extends javax.swing.JDialog {
 
     private void txtbarcodeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbarcodeKeyPressed
         if (evt.getKeyCode() == 10) {
-            txtname.grabFocus();
+            txtNote.grabFocus();
         }
     }//GEN-LAST:event_txtbarcodeKeyPressed
 
@@ -971,6 +987,12 @@ public class customerRegisternew extends javax.swing.JDialog {
         new police(null, false).setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
 
+    private void txtNoteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNoteKeyPressed
+      if (evt.getKeyCode() == 10) {
+            txtname.grabFocus();
+        }
+    }//GEN-LAST:event_txtNoteKeyPressed
+
     /**
      * @param args the command line arguments
      */
@@ -1043,6 +1065,7 @@ public class customerRegisternew extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1056,6 +1079,7 @@ public class customerRegisternew extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JTextField txtDivisionalSecretariat;
+    private javax.swing.JTextField txtNote;
     private javax.swing.JTextField txtadmissiono;
     private javax.swing.JTextField txtadress;
     private javax.swing.JFormattedTextField txtbarcode;
@@ -1271,11 +1295,11 @@ public class customerRegisternew extends javax.swing.JDialog {
                     //repeat data
                     model.db2.putData("INSERT INTO customer_register(uniqueCustomerDetails_id,admission_no,adress,tp1,tp2,tp3,"
                             + "barcode,reg_date,vehicle_class,medicalNo,licenNo,licenDate,vclass,canDriveOrNot,manualOrAuto,"
-                            + "status,nic,division_id,police_id)values('" + uniqueCustomerDetails_id + "','" + customerId + "','" + txtadress.getText().toUpperCase() + "',"
+                            + "status,nic,division_id,police_id,note)values('" + uniqueCustomerDetails_id + "','" + customerId + "','" + txtadress.getText().toUpperCase() + "',"
                             + "'" + txttp1.getText() + "','" + txttp2.getText() + "','" + txttp3.getText() + "','" + txtbarcode.getText() + "',"
                             + " NOW(),'" + txtvehicleclass.getText().toUpperCase() + "','" + txtmedicalno.getText() + "','" + txtlicenno.getText() + "',"
                             + "'" + txtlicendate.getText() + "','" + txtlicenvclass.getText().toUpperCase() + "','" + cmbcancantdrive.getSelectedItem() + "',"
-                            + "'" + cmbmanualauto.getSelectedItem() + "','" + "new" + "','" + txtnic.getText() + "','" + divisionId + "','" + policeId + "')");
+                            + "'" + cmbmanualauto.getSelectedItem() + "','" + "new" + "','" + txtnic.getText() + "','" + divisionId + "','" + policeId + "','"+txtNote.getText()+"')");
 
                     ///////////////////////////////////////////
                     //log

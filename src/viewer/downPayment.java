@@ -99,6 +99,8 @@ public class downPayment extends javax.swing.JFrame {
         txtintroducerdiscount = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
         chkUpdate = new javax.swing.JCheckBox();
+        jLabel19 = new javax.swing.JLabel();
+        txtNote = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         cmbreasonsecond = new javax.swing.JComboBox();
@@ -391,6 +393,8 @@ public class downPayment extends javax.swing.JFrame {
             }
         });
 
+        jLabel19.setText("Note");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -402,7 +406,11 @@ public class downPayment extends javax.swing.JFrame {
                         .addComponent(chkUpdate)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel19)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtNote)
+                        .addGap(18, 18, 18)
                         .addComponent(jButton1)
                         .addGap(35, 35, 35))
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -439,7 +447,9 @@ public class downPayment extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton3)
-                    .addComponent(chkUpdate))
+                    .addComponent(chkUpdate)
+                    .addComponent(jLabel19)
+                    .addComponent(txtNote, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -812,9 +822,10 @@ public class downPayment extends javax.swing.JFrame {
                     e.printStackTrace();
                 }
 
-            } else {
+            } else if(updatetotal < total) {
+                dif = total - updatetotal;
                 try {
-                    model.db.putData("update downpayment set total='" + updatetotal + "', balance= balance - '" + dif + "' where id= '" + down_id + "'    ");
+                    model.db.putData("update downpayment set total='" + updatetotal + "' , balance= balance - '" + dif + "' where id= '" + down_id + "'    ");
                     com.Messages.normaljoption("Amount Updated!");
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -889,6 +900,7 @@ public class downPayment extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -908,6 +920,7 @@ public class downPayment extends javax.swing.JFrame {
     private javax.swing.JLabel lblUpdatefullamount;
     private javax.swing.JLabel lblstatus;
     private javax.swing.JTable tbl;
+    private javax.swing.JTextField txtNote;
     private javax.swing.JTextField txtUpdateFullAmount;
     private javax.swing.JTextField txtadmissionno;
     private javax.swing.JTextField txtbalance;
@@ -929,7 +942,8 @@ public class downPayment extends javax.swing.JFrame {
             ResultSet rs = model.db.getData("SELECT\n"
                     + "uniquecustomerdetails.`namewithinitial`,\n"
                     + "customer_register.vehicle_class,\n"
-                    + "customer_register.reg_date\n"
+                    + "customer_register.reg_date,\n"
+                    + "customer_register.note\n"
                     + "FROM\n"
                     + "customer_register ,\n"
                     + "uniquecustomerdetails\n"
@@ -940,6 +954,7 @@ public class downPayment extends javax.swing.JFrame {
                 txtname.setText(rs.getString(1));
                 txtclasses.setText(rs.getString(2));
                 txtdate.setText(rs.getString(3));
+                txtNote.setText(rs.getString(4));
 
             }
 
@@ -969,7 +984,8 @@ public class downPayment extends javax.swing.JFrame {
                     + "uptosecondpayment.payby,\n"
                     + "uptosecondpayment.amount,\n"
                     + "uptosecondpayment.`status`,\n"
-                    + "uptosecondpayment.id as invoiceno\n"
+                    + "uptosecondpayment.id as invoiceno,\n"
+                    + "customer_register.note\n"
                     + "FROM\n"
                     + "downpayment ,\n"
                     + "customer_register ,\n"
@@ -992,6 +1008,7 @@ public class downPayment extends javax.swing.JFrame {
                 txttotsecond.setText(rs.getString(2));
                 txtpay.setText(rs.getString(11));
                 txtbalance.setText(rs.getString(3));
+                txtNote.setText(rs.getString(14));
 
             }
         } catch (Exception e) {

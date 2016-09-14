@@ -17,9 +17,9 @@ public class ConstantData {
     public static String Status_DONE = "2";
     public static String Status_DEACTIVE = "3";
     public static String Status_ALLOW = "4";
-    public static String dbConnectionURL = "jdbc:mysql://localhost:3306/sandalu_kushan";
+    public static String dbConnectionURL = "jdbc:mysql://localhost:3306/vijaya_lerners";
     public static String dbUsername = "root";
-    public static String dbPassword = "tricansq3254";
+    public static String dbPassword = "123";
     public static String ReportPATH = "";
     public static home home = null;
 }

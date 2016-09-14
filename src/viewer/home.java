@@ -6,8 +6,16 @@
 package viewer;
 
 import com.ConstantData;
-import java.awt.Cursor;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.ImageIcon;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -73,6 +81,7 @@ public class home extends javax.swing.JFrame {
         jMenuItem12 = new javax.swing.JMenuItem();
         jMenuItem13 = new javax.swing.JMenuItem();
         jMenuItem14 = new javax.swing.JMenuItem();
+        jMenuItem19 = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenu8 = new javax.swing.JMenu();
@@ -245,6 +254,15 @@ public class home extends javax.swing.JFrame {
         });
         jMenu5.add(jMenuItem14);
 
+        jMenuItem19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/png/tick_32.png"))); // NOI18N
+        jMenuItem19.setText("DS Register - 01");
+        jMenuItem19.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem19ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem19);
+
         jMenuBar1.add(jMenu5);
 
         jMenu7.setText("Accounts");
@@ -359,6 +377,31 @@ public class home extends javax.swing.JFrame {
         new viewWrittenExamDetails(this, false).setVisible(true);
     }//GEN-LAST:event_jMenuItem18ActionPerformed
 
+    private void jMenuItem19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem19ActionPerformed
+         try {
+            //JRTableModelDataSource dataSource;
+           // dataSource = new JRTableModelDataSource(tbltrial.getModel());
+            //String reportSource = "c:\\reports\\viewInvoice.jrxml";
+            String reportSource = "src/reports/bigreport.jrxml";
+            Map<String, Object> params = new HashMap<String, Object>();
+
+          //  params.put("tot", String.valueOf(txttotalapplication.getText()));
+
+            JasperReport jasperReport = JasperCompileManager.compileReport(reportSource);
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
+            Connection con = (Connection) DriverManager.getConnection(ConstantData.dbConnectionURL, ConstantData.dbUsername, ConstantData.dbPassword);
+            JasperPrint jp = JasperFillManager.fillReport(jasperReport, params, con);
+//            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, params);
+
+            JasperViewer.viewReport(jp, false);
+
+            // JasperPrintManager.printReport(jasperPrint, false);
+            // this.dispose();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jMenuItem19ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -414,6 +457,7 @@ public class home extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem16;
     private javax.swing.JMenuItem jMenuItem17;
     private javax.swing.JMenuItem jMenuItem18;
+    private javax.swing.JMenuItem jMenuItem19;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;

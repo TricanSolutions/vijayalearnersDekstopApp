@@ -26,9 +26,9 @@ public class writtenExamDetails extends javax.swing.JDialog {
         initComponents();
         loadtabl();
         txtadmissiono.grabFocus();
-        
+
     }
-    
+
     writtenExamDetails(String adno, String name, int id, boolean b) {
         initComponents();
         txtBarcode.grabFocus();
@@ -37,7 +37,7 @@ public class writtenExamDetails extends javax.swing.JDialog {
         cusid = id;
         System.out.println(cusid);
         loadtabl();
-        
+
     }
     int cusid;
     int writtenexamid;
@@ -303,7 +303,7 @@ public class writtenExamDetails extends javax.swing.JDialog {
     private void tblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMouseClicked
         DefaultTableModel dtm = (DefaultTableModel) tbl.getModel();
         writtenexamid = Integer.valueOf(dtm.getValueAt(tbl.getSelectedRow(), 0).toString());
-        
+
         txtid.setText(String.valueOf(dtm.getValueAt(tbl.getSelectedRow(), 0)));
         txtexamdate.setText(String.valueOf(dtm.getValueAt(tbl.getSelectedRow(), 1)));
         txtresult.setText(String.valueOf(dtm.getValueAt(tbl.getSelectedRow(), 2)));
@@ -317,21 +317,21 @@ public class writtenExamDetails extends javax.swing.JDialog {
     private void txtadmissionoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtadmissionoKeyPressed
         if (evt.getKeyCode() == 10) {
             loadtabl();
-            
+
         }
     }//GEN-LAST:event_txtadmissionoKeyPressed
 
     private void txtexamdateKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtexamdateKeyPressed
         if (evt.getKeyCode() == 10) {
             txtresult.grabFocus();
-            
+
         }
     }//GEN-LAST:event_txtexamdateKeyPressed
 
     private void txtresultKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtresultKeyPressed
         if (evt.getKeyCode() == 10) {
             cmbpassorfail.grabFocus();
-            
+
         }
     }//GEN-LAST:event_txtresultKeyPressed
 
@@ -339,7 +339,7 @@ public class writtenExamDetails extends javax.swing.JDialog {
         if (evt.getKeyCode() == 10) {
             submit();
             txtadmissiono.grabFocus();
-            
+
         }
     }//GEN-LAST:event_cmbpassorfailKeyPressed
 
@@ -443,13 +443,13 @@ public class writtenExamDetails extends javax.swing.JDialog {
                 String pass = rs.getString(5);
                 Object o[] = {id, date, result, pass};
                 dtm.addRow(o);
-                
+
             }
-            
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
+
         try {
             ResultSet rs = model.db.getData("SELECT\n"
                     + "customer_register.id,\n"
@@ -458,41 +458,42 @@ public class writtenExamDetails extends javax.swing.JDialog {
                     + "customer_register\n"
                     + "INNER JOIN uniquecustomerdetails ON customer_register.uniqueCustomerDetails_id = uniquecustomerdetails.id\n"
                     + "WHERE\n"
-                    + "customer_register.admission_no = '"+txtadmissiono.getText().trim()+"'");
-            while (rs.next()) {                
+                    + "customer_register.admission_no = '" + txtadmissiono.getText().trim() + "'");
+            while (rs.next()) {
                 txtname.setText(rs.getString(2));
-                cusid=rs.getInt(1);
-                
+                cusid = rs.getInt(1);
+
             }
-            
+
         } catch (Exception e) {
             e.printStackTrace();
-            
+
         }
 
         //  txtexamdate.grabFocus();
     }
-    
+
     private void clear() {
         txtid.setText("");
-       // txtexamdate.setText("");
+        // txtexamdate.setText("");
         txtresult.setText("");
         cmbpassorfail.setSelectedIndex(0);
+        txtBarcode.setText("");
     }
-    
+
     private void submit() {
         if (cmbpassorfail.getSelectedIndex() == 0) {
             com.Messages.errorjoption("Select Pass or Fail!");
             cmbpassorfail.grabFocus();
-            
+
         } else {
             if (txtid.getText().isEmpty()) {
                 try {
                     model.db.putData("INSERT INTO writtenexamresult(customer_register_id,examDate,writtenResult,passOrFail)"
                             + "values('" + cusid + "','" + txtexamdate.getText() + "','" + txtresult.getText() + "','" + cmbpassorfail.getSelectedItem() + "')");
-                    
+
                     model.db.putData("UPDATE customer_register set barcode='" + txtBarcode.getText().trim() + "' where id='" + cusid + "'  ");
-                    
+
                     model.db.putData("INSERT INTO log(date,description,username)values(NOW(),'" + "written exam add" + "',"
                             + "'" + userstatus.LodUser + "')");
                     com.Messages.normaljoption("Data Saved!");
@@ -500,13 +501,13 @@ public class writtenExamDetails extends javax.swing.JDialog {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                
+
             } else {
                 try {
                     model.db.putData("UPDATE writtenexamresult set examDate='" + txtexamdate.getText() + "',"
                             + "writtenResult='" + txtresult.getText() + "',passOrFail='" + cmbpassorfail.getSelectedItem() + "' "
                             + "WHERE id='" + txtid.getText() + "' ");
-                    
+
                     model.db.putData("INSERT INTO log(date,description,username)values(NOW(),'" + "written exam updated" + "',"
                             + "'" + userstatus.LodUser + "')");
                     com.Messages.normaljoption("Data Updated!");
@@ -514,9 +515,9 @@ public class writtenExamDetails extends javax.swing.JDialog {
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
-                
+
             }
-            
+
         }
         clear();
     }

@@ -11,10 +11,7 @@ import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartFrame;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PiePlot;
-import org.jfree.chart.plot.PiePlot3D;
-import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
-import sun.util.calendar.CalendarUtils;
 
 /**
  *
@@ -370,7 +367,7 @@ public class eod extends javax.swing.JDialog {
                     + "downpayment\n"
                     + "WHERE\n"
                     + "uptosecondpayment.downpayment_id = downpayment.id AND\n"
-                    + "uptosecondpayment.date BETWEEN '" + txtdatefrom.getText() + "' AND '" + txtdateto.getText() + "'");
+                    + "uptosecondpayment.date BETWEEN '" + txtdatefrom.getText() + "' AND '" + txtdateto.getText() + "' order by uptosecondpayment.id DESC ");
 
             while (rs.next()) {
                 String invoiceid = rs.getString(1);
@@ -431,18 +428,18 @@ public class eod extends javax.swing.JDialog {
         txtpro.setText("" + dif);
     }
 
-    private void chart() {
-        DefaultPieDataset pieDataset= new DefaultPieDataset();
-        pieDataset.setValue("one", new Integer(10));
-        pieDataset.setValue("two", new Integer(20));
-        pieDataset.setValue("three", new Integer(45));
-        
-        JFreeChart chart= ChartFactory.createPieChart("pie chart",pieDataset,true,true,true);
-        PiePlot p= (PiePlot)chart.getPlot();
-        //p.setForegroundAlpha(TOP_ALIGNMENT);
-        ChartFrame frame= new ChartFrame("Pie Chart", chart);
-        frame.setVisible(true);
-        frame.setSize(450, 500);
-    }
+//    private void chart() {
+//        DefaultPieDataset pieDataset= new DefaultPieDataset();
+//        pieDataset.setValue("one", new Integer(10));
+//        pieDataset.setValue("two", new Integer(20));
+//        pieDataset.setValue("three", new Integer(45));
+//        
+//        JFreeChart chart= ChartFactory.createPieChart("pie chart",pieDataset,true,true,true);
+//        PiePlot p= (PiePlot)chart.getPlot();
+//        //p.setForegroundAlpha(TOP_ALIGNMENT);
+//        ChartFrame frame= new ChartFrame("Pie Chart", chart);
+//        frame.setVisible(true);
+//        frame.setSize(450, 500);
+//    }
 
 }

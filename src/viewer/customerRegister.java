@@ -114,6 +114,8 @@ public class customerRegister extends javax.swing.JDialog {
         cmbSex = new javax.swing.JComboBox();
         jLabel22 = new javax.swing.JLabel();
         txtnamewithinitials = new javax.swing.JTextField();
+        jLabel23 = new javax.swing.JLabel();
+        txtNote = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         txtlicenno = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
@@ -327,6 +329,14 @@ public class customerRegister extends javax.swing.JDialog {
             }
         });
 
+        jLabel23.setText("Note");
+
+        txtNote.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNoteKeyPressed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -342,7 +352,7 @@ public class customerRegister extends javax.swing.JDialog {
                                     .addComponent(jLabel7)
                                     .addComponent(jLabel3))
                                 .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(txtadmissiono, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(12, 12, 12)
@@ -352,7 +362,11 @@ public class customerRegister extends javax.swing.JDialog {
                                         .addGap(18, 18, 18)
                                         .addComponent(jLabel12)
                                         .addGap(18, 18, 18)
-                                        .addComponent(txtbarcode, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(txtbarcode, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel23)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtNote))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(txtname, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
@@ -399,7 +413,9 @@ public class customerRegister extends javax.swing.JDialog {
                     .addComponent(txtadmissiono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel12)
-                    .addComponent(txtbarcode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtbarcode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel23)
+                    .addComponent(txtNote, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -820,7 +836,7 @@ public class customerRegister extends javax.swing.JDialog {
                         + "medicalNo='" + txtmedicalno.getText() + "',licenNo='" + txtlicenno.getText() + "',"
                         + "licenDate='" + txtlicendate.getText() + "',vclass='" + txtlicenvclass.getText() + "',"
                         + "canDriveOrNot='" + cmbcancantdrive.getSelectedItem() + "',manualOrAuto='" + cmbmanualauto2.getSelectedItem() + "',"
-                        + "status='" + "Updated" + "',division_id='" + divisionId + "',police_id='" + policeId + "'  WHERE admission_no='" + txtadmissiono.getText() + "' ");
+                        + "status='" + "Updated" + "',division_id='" + divisionId + "',police_id='" + policeId + "',note='"+txtNote.getText()+"',nic='"+txtnic.getText()+"'  WHERE admission_no='" + txtadmissiono.getText() + "' ");
                 if (con != null) {
                     con.commit();
 
@@ -949,7 +965,7 @@ public class customerRegister extends javax.swing.JDialog {
 
     private void txtbarcodeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbarcodeKeyPressed
         if (evt.getKeyCode() == 10) {
-            txtname.grabFocus();
+            txtNote.grabFocus();
 
         }
     }//GEN-LAST:event_txtbarcodeKeyPressed
@@ -1098,6 +1114,13 @@ public class customerRegister extends javax.swing.JDialog {
         new police(null, false).setVisible(true);
     }//GEN-LAST:event_jButton9ActionPerformed
 
+    private void txtNoteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNoteKeyPressed
+         if (evt.getKeyCode() == 10) {
+            txtname.grabFocus();
+
+        }
+    }//GEN-LAST:event_txtNoteKeyPressed
+
     /**
      * @param args the command line arguments
      */
@@ -1172,6 +1195,7 @@ public class customerRegister extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1184,6 +1208,7 @@ public class customerRegister extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JTextField txtDivisionalSecretariat;
+    private javax.swing.JTextField txtNote;
     private javax.swing.JTextField txtadmissiono;
     private javax.swing.JTextField txtadress;
     private javax.swing.JFormattedTextField txtbarcode;
@@ -1296,7 +1321,8 @@ public class customerRegister extends javax.swing.JDialog {
                     + "uniquecustomerdetails.dob,\n"//21
                     + "uniquecustomerdetails.sex,\n"//22
                     + "uniquecustomerdetails.`status`,\n"//23
-                    + "uniquecustomerdetails.namewithinitial\n"//24
+                    + "uniquecustomerdetails.namewithinitial,\n"//24
+                    + "customer_register.note\n"//25
                     + "FROM\n"
                     + "customer_register ,\n"
                     + "uniquecustomerdetails\n"
@@ -1327,6 +1353,7 @@ public class customerRegister extends javax.swing.JDialog {
                 txtbarcode.setText(rs.getString(8));
                 txtvehicleclass.setText(rs.getString(10));
                 txtmedicalno.setText(rs.getString(11));
+                txtNote.setText(rs.getString(25));
 
             }
         } catch (Exception e) {
