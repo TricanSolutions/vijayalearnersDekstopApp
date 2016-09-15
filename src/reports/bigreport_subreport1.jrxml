@@ -27,13 +27,16 @@ writtenexamresult.customer_register_id=$P{id}]]>
 		<band splitType="Stretch"/>
 	</background>
 	<detail>
-		<band height="40" splitType="Stretch">
+		<band height="34" splitType="Stretch">
 			<textField>
-				<reportElement x="0" y="0" width="112" height="38" uuid="0776a3a9-01cf-4f94-9349-9aaa3e1efcd7"/>
-				<textFieldExpression><![CDATA[$F{examDate}+"\n"+$F{writtenResult}+"\n"+$F{passOrFail}]]></textFieldExpression>
+				<reportElement x="0" y="0" width="112" height="26" uuid="0776a3a9-01cf-4f94-9349-9aaa3e1efcd7"/>
+				<textFieldExpression><![CDATA[$F{examDate}+"\n"+$F{writtenResult}+" /"+$F{passOrFail}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="4" y="38" width="90" height="1" uuid="5b97f738-e250-4627-ac90-f2189a57a0b7"/>
+				<reportElement x="2" y="30" width="110" height="1" uuid="5b97f738-e250-4627-ac90-f2189a57a0b7"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
 			</line>
 		</band>
 	</detail>

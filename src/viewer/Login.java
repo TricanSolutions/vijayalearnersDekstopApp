@@ -13,11 +13,14 @@ package viewer;
 import com.ConstantData;
 import com.jtattoo.plaf.AbstractLookAndFeel;
 import com.jtattoo.plaf.bernstein.BernsteinLookAndFeel;
+import com.jtattoo.plaf.fast.FastLookAndFeel;
 import com.jtattoo.plaf.hifi.HiFiBorderFactory;
 import com.jtattoo.plaf.hifi.HiFiLookAndFeel;
+import com.jtattoo.plaf.luna.LunaLookAndFeel;
 import com.jtattoo.plaf.mcwin.McWinLookAndFeel;
 import com.jtattoo.plaf.mint.MintLookAndFeel;
 import com.sun.java.swing.plaf.motif.MotifLookAndFeel;
+import com.sun.java.swing.plaf.windows.WindowsClassicLookAndFeel;
 import com.sun.java.swing.plaf.windows.WindowsLookAndFeel;
 import com.userstatus;
 import java.sql.Connection;
@@ -31,6 +34,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.plaf.metal.MetalLookAndFeel;
+import javax.swing.plaf.metal.MetalTreeUI;
 import javax.swing.plaf.multi.MultiLookAndFeel;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -285,7 +289,8 @@ public class Login extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
         try {
-            UIManager.setLookAndFeel(new HiFiLookAndFeel());
+//            UIManager.setLookAndFeel(new HiFiLookAndFeel());
+            UIManager.setLookAndFeel(new MintLookAndFeel());
         } catch (Exception e) {
             System.out.println(e);
         }
