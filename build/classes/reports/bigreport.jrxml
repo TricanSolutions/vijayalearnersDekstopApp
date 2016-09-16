@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="1190" pageHeight="842" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="1119" leftMargin="50" rightMargin="21" topMargin="21" bottomMargin="21" whenResourceMissingType="Empty" uuid="06ecfd9b-4113-47e5-b2e4-d6b6204a66a9">
 	<property name="ireport.zoom" value="1.5"/>
-	<property name="ireport.x" value="0"/>
+	<property name="ireport.x" value="329"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["src\\reports\\"]]></defaultValueExpression>
@@ -40,7 +40,8 @@ practicalexam.g_pass_or_fail,
 practicalexam.d,
 practicalexam.d_pass_or_fail,
 practicalexam.ce,
-practicalexam.ce_pass_or_fail
+practicalexam.ce_pass_or_fail,
+MIN(YEAR(reg_date)-YEAR(dob)) as age
 FROM
 customer_register
 LEFT JOIN writtenexamresult ON customer_register.id = writtenexamresult.customer_register_id
@@ -148,6 +149,7 @@ customer_register.id ASC]]>
 	<field name="ce_pass_or_fail" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
+	<field name="age" class="java.lang.Object"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -236,7 +238,7 @@ Proficiency Certificate Number]]></text>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Proprietor Sign]]></text>
+				<text><![CDATA[Signature of Proprietor]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="21" y="2" width="61" height="29" uuid="0b48e0fb-3f20-4382-8069-3207de29a0c3"/>
@@ -256,14 +258,14 @@ Date]]></text>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="508" y="1" width="94" height="49" uuid="fb2ac6b3-56fe-4cc9-896d-624c7b902b1e"/>
-				<textFieldExpression><![CDATA[$F{licenNo}+"\n"+$F{vclass}+" / "+$F{licenDate}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{licenNo}+"\n"+$F{vclass}+"\n"+$F{licenDate}.replaceAll("    -  -  "," ")]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" stretchType="RelativeToTallestObject" mode="Transparent" x="801" y="2" width="79" height="48" uuid="ffb6c16a-e08e-4126-bf85-9ac09673da4f"/>
+			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" mode="Opaque" x="801" y="2" width="79" height="48" isPrintWhenDetailOverflows="true" uuid="ffb6c16a-e08e-4126-bf85-9ac09673da4f"/>
 				<textElement>
 					<font isPdfEmbedded="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{examDate}+" to "+$F{pracDate}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{examDate}.replaceAll("null"," ")+" to "+$F{pracDate}.replaceAll("null"," ")]]></textFieldExpression>
 			</textField>
 			<subreport isUsingCache="true">
 				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="681" y="0" width="119" height="40" uuid="050642cb-6308-4feb-8c51-b9d64721db69"/>
@@ -274,7 +276,7 @@ Date]]></text>
 				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} +"bigreport_subreport1.jasper"]]></subreportExpression>
 			</subreport>
 			<subreport>
-				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="880" y="1" width="147" height="49" uuid="a17c1a72-afeb-4520-95ca-138d3f4522a2"/>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="880" y="1" width="147" height="39" uuid="a17c1a72-afeb-4520-95ca-138d3f4522a2"/>
 				<subreportParameter name="id">
 					<subreportParameterExpression><![CDATA[$F{id}]]></subreportParameterExpression>
 				</subreportParameter>
@@ -284,16 +286,12 @@ Date]]></text>
 			<line>
 				<reportElement positionType="FixRelativeToBottom" x="0" y="51" width="1133" height="1" uuid="945c4419-2772-4c0a-9d07-7c41a1a3344a"/>
 				<graphicElement>
-					<pen lineStyle="Dashed"/>
+					<pen lineStyle="Dotted"/>
 				</graphicElement>
 			</line>
 			<textField>
 				<reportElement x="284" y="2" width="100" height="48" uuid="fabbf96d-672f-4e94-9520-911fd170490c"/>
-				<textFieldExpression><![CDATA[$F{dob}+"\n"+$F{tp1}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="384" y="2" width="50" height="20" uuid="628426fa-9ffc-4ee6-9e7e-e30f52027c0b"/>
-				<textFieldExpression><![CDATA[$F{vclass}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{dob}+"\n"+$F{age}+"\n"+$F{tp1}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="438" y="2" width="68" height="48" uuid="713d6efa-90dc-48db-84c5-748d5ac524b5"/>
@@ -309,15 +307,19 @@ Date]]></text>
 				<text><![CDATA[............................]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="21" y="0" width="61" height="56" uuid="41923cfa-7b6f-42c8-b7e3-cc326db2cfb7"/>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="21" y="0" width="61" height="52" uuid="41923cfa-7b6f-42c8-b7e3-cc326db2cfb7"/>
 				<textFieldExpression><![CDATA[$F{admission_no}+"\n\n"+$F{reg_date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="384" y="2" width="50" height="20" uuid="a8f1b198-ffba-4fac-ad85-a9f4a90f81f0"/>
+				<textFieldExpression><![CDATA[$F{vehicle_class}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
 	<pageFooter>
-		<band height="30">
+		<band height="23">
 			<textField>
-				<reportElement x="702" y="0" width="100" height="20" uuid="2fda30e2-aacc-4fdd-a28e-7ef19a9a0115"/>
+				<reportElement x="1019" y="0" width="100" height="20" uuid="2fda30e2-aacc-4fdd-a28e-7ef19a9a0115"/>
 				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 		</band>

@@ -35,7 +35,7 @@ writtenexamresult.customer_register_id=$P{id}]]>
 			<line>
 				<reportElement x="2" y="30" width="110" height="1" uuid="5b97f738-e250-4627-ac90-f2189a57a0b7"/>
 				<graphicElement>
-					<pen lineWidth="0.5"/>
+					<pen lineWidth="0.5" lineStyle="Dotted"/>
 				</graphicElement>
 			</line>
 		</band>

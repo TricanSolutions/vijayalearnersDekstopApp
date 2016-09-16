@@ -72,14 +72,19 @@ practicalexam.customer_register_id = $P{id}]]>
 		<band splitType="Stretch"/>
 	</background>
 	<detail>
-		<band height="75" splitType="Stretch">
+		<band height="53" splitType="Stretch">
 			<textField isStretchWithOverflow="true">
-				<reportElement uuid="e0b5c839-abf3-43ea-bd75-3618a2ceed29" positionType="Float" stretchType="RelativeToBandHeight" x="0" y="0" width="147" height="74"/>
-				<textElement/>
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="0" y="0" width="147" height="50" uuid="e0b5c839-abf3-43ea-bd75-3618a2ceed29"/>
 				<textFieldExpression><![CDATA[$F{examDate}+"\n"+$F{a}+"-"+$F{a_pass_or_fail}+" , "+$F{b}+"-"+$F{b_pass_or_fail}
 +"\n"+$F{bone}+"-"+$F{bone_pass_or_fail}+" , "+$F{g}+"-"+$F{g_pass_or_fail}
 +"\n"+$F{d}+"-"+$F{d_pass_or_fail}+" , "+$F{ce}+"-"+$F{ce_pass_or_fail}]]></textFieldExpression>
 			</textField>
+			<line>
+				<reportElement x="1" y="51" width="129" height="1" uuid="9041f8f1-bfad-475c-bb09-5b32d3bf8bd6"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
 		</band>
 	</detail>
 </jasperReport>
