@@ -41,6 +41,7 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.view.JasperViewer;
+import org.opencv.core.Core;
 
 /**
  *
@@ -288,6 +289,7 @@ public class Login extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
         try {
 //            UIManager.setLookAndFeel(new HiFiLookAndFeel());
             UIManager.setLookAndFeel(new MintLookAndFeel());

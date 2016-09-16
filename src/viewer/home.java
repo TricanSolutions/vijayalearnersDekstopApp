@@ -86,6 +86,7 @@ public class home extends javax.swing.JFrame {
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenu8 = new javax.swing.JMenu();
         jMenuItem10 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Vijaya Learners - Kurunegala");
@@ -288,6 +289,14 @@ public class home extends javax.swing.JFrame {
         });
         jMenu8.add(jMenuItem10);
 
+        jMenuItem5.setText("Image");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu8.add(jMenuItem5);
+
         jMenuBar1.add(jMenu8);
 
         setJMenuBar(jMenuBar1);
@@ -402,6 +411,10 @@ public class home extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItem19ActionPerformed
 
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        new Snapshot().setVisible(true);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -461,6 +474,7 @@ public class home extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
