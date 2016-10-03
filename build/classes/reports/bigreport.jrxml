@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="1190" pageHeight="842" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="1119" leftMargin="50" rightMargin="21" topMargin="21" bottomMargin="21" whenResourceMissingType="Empty" uuid="06ecfd9b-4113-47e5-b2e4-d6b6204a66a9">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["src\\reports\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="id" class="java.lang.String" isForPrompting="false"/>
+	<queryString>
+		<![CDATA[SELECT
+customer_register.id,
+customer_register.reg_date,
+customer_register.admission_no,
+uniquecustomerdetails.namewithinitial,
+customer_register.nic,
+customer_register.adress,
+uniquecustomerdetails.dob,
+customer_register.tp1,
+customer_register.tp2,
+customer_register.tp3,
+customer_register.vehicle_class,
+customer_register.medicalNo,
+customer_register.licenNo,
+customer_register.vclass,
+customer_register.licenDate,
+customer_register.barcode,
+writtenexamresult.examDate,
+writtenexamresult.writtenResult,
+writtenexamresult.passOrFail,
+practicalexam.examDate as pracDate,
+practicalexam.a,
+practicalexam.a_pass_or_fail,
+practicalexam.b,
+practicalexam.b_pass_or_fail,
+practicalexam.bone,
+practicalexam.bone_pass_or_fail,
+practicalexam.g,
+practicalexam.g_pass_or_fail,
+practicalexam.d,
+practicalexam.d_pass_or_fail,
+practicalexam.ce,
+practicalexam.ce_pass_or_fail,
+MIN(YEAR(reg_date)-YEAR(dob)) as age
+FROM
+customer_register
+LEFT JOIN writtenexamresult ON customer_register.id = writtenexamresult.customer_register_id
+LEFT JOIN practicalexam ON customer_register.id = practicalexam.customer_register_id ,
+uniquecustomerdetails
+WHERE
+customer_register.uniqueCustomerDetails_id = uniquecustomerdetails.id AND
+customer_register.uniqueCustomerDetails_id = uniquecustomerdetails.id
+GROUP BY
+customer_register.admission_no
+ORDER BY
+customer_register.id ASC]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="reg_date" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="admission_no" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="namewithinitial" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nic" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="adress" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dob" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tp1" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tp2" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tp3" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="vehicle_class" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="medicalNo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="licenNo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="vclass" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="licenDate" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="barcode" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="examDate" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="writtenResult" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="passOrFail" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pracDate" class="java.lang.String"/>
+	<field name="a" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="a_pass_or_fail" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="b" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="b_pass_or_fail" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="bone" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="bone_pass_or_fail" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="g" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="g_pass_or_fail" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="d" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="d_pass_or_fail" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ce" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ce_pass_or_fail" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="age" class="java.lang.Long"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="70" splitType="Stretch">
+			<staticText>
+				<reportElement x="105" y="2" width="199" height="48" uuid="18bbb7b8-5485-42cf-b18c-11f3300c596f"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Name
+NIC No
+Adress]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="528" y="2" width="94" height="48" uuid="e391f7cd-daca-458f-9983-918bad6b08ca"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Exist Licen No
+Class
+Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="701" y="1" width="119" height="60" uuid="ab452975-d700-480e-b9a0-3cfcc2e8990e"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date of
+Written test
+Marks
+Results]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="900" y="2" width="147" height="48" uuid="06f1c217-6a21-4ab3-90a3-5cc8a443a593"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date of
+Practical test
+Result]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="821" y="2" width="79" height="29" uuid="4feb3611-8e1f-4af2-b6e1-19400369066d"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date Range of Practice]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="66" width="1119" height="1" uuid="85d4c195-e5b2-4c9e-9fa3-74fc1d22afd9"/>
+			</line>
+			<staticText>
+				<reportElement x="304" y="2" width="100" height="48" uuid="1baa3f8f-ea6c-431a-b3d3-16dec8c9802e"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[DOB
+Age
+TP No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="404" y="2" width="50" height="29" uuid="a35438cc-84a1-4da2-8e8a-544dad736e29"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Vehicle
+Classes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="458" y="1" width="68" height="65" uuid="6763e791-7dc6-4380-874c-314bdc41aeb2"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Medical No
+Date
+Proficiency Certificate Number]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="624" y="2" width="77" height="29" uuid="c2cbfc74-0917-4f75-a0c2-c39dc749fef9"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Barcode]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1047" y="2" width="71" height="29" uuid="34685be8-c659-4b5d-afcf-05a84197cc14"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Signature of principal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="41" y="2" width="61" height="29" uuid="0b48e0fb-3f20-4382-8069-3207de29a0c3"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Adm No
+Date]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="56" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="105" y="0" width="199" height="40" uuid="2ad1b8b7-d548-4d16-90d1-8ccd11ac18d0"/>
+				<textFieldExpression><![CDATA[$F{namewithinitial}+ "\n" +$F{nic}+"\n"+$F{adress}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="528" y="1" width="94" height="39" uuid="fb2ac6b3-56fe-4cc9-896d-624c7b902b1e"/>
+				<textFieldExpression><![CDATA[$F{licenNo}+"\n"+$F{vclass}+"\n"+$F{licenDate}.replaceAll("    -  -  "," ")]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" mode="Opaque" x="821" y="2" width="79" height="38" isPrintWhenDetailOverflows="true" uuid="ffb6c16a-e08e-4126-bf85-9ac09673da4f"/>
+				<textElement>
+					<font isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{examDate}.replaceAll("null"," ")+" to "+$F{pracDate}.replaceAll("null"," ")]]></textFieldExpression>
+			</textField>
+			<subreport isUsingCache="true">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="701" y="0" width="119" height="40" uuid="050642cb-6308-4feb-8c51-b9d64721db69"/>
+				<subreportParameter name="id">
+					<subreportParameterExpression><![CDATA[$F{id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} +"bigreport_subreport1.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="900" y="1" width="147" height="39" uuid="a17c1a72-afeb-4520-95ca-138d3f4522a2"/>
+				<subreportParameter name="id">
+					<subreportParameterExpression><![CDATA[$F{id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} +"bigreport_subreport2.jasper"]]></subreportExpression>
+			</subreport>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="42" width="1119" height="1" uuid="945c4419-2772-4c0a-9d07-7c41a1a3344a"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="304" y="2" width="100" height="38" uuid="fabbf96d-672f-4e94-9520-911fd170490c"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dob}+"\n"+$F{age}+"\n"+$F{tp1}+"\n"+$F{tp2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="458" y="2" width="68" height="38" uuid="713d6efa-90dc-48db-84c5-748d5ac524b5"/>
+				<textFieldExpression><![CDATA[$F{medicalNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="624" y="2" width="77" height="20" uuid="7653f0c7-1d3f-4558-8fc3-e65c67ea404f"/>
+				<textFieldExpression><![CDATA[$F{barcode}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1047" y="2" width="71" height="38" uuid="f9b8459d-16cf-4372-98ec-1a76859617a2"/>
+				<textElement verticalAlignment="Bottom"/>
+				<text><![CDATA[.......................]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="41" y="0" width="61" height="40" isPrintWhenDetailOverflows="true" uuid="41923cfa-7b6f-42c8-b7e3-cc326db2cfb7"/>
+				<textFieldExpression><![CDATA[$F{admission_no}+"\n\n"+$F{reg_date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="404" y="2" width="50" height="20" uuid="a8f1b198-ffba-4fac-ad85-a9f4a90f81f0"/>
+				<textFieldExpression><![CDATA[$F{vehicle_class}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="23">
+			<textField>
+				<reportElement x="1019" y="0" width="100" height="20" uuid="2fda30e2-aacc-4fdd-a28e-7ef19a9a0115"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

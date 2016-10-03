@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="bigreport_subreport2" pageWidth="555" pageHeight="802" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="03e1b1df-2f2e-40a0-9719-7e6862d6e842">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="id" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+practicalexam.examDate,
+practicalexam.a,
+practicalexam.a_pass_or_fail,
+practicalexam.b,
+practicalexam.b_pass_or_fail,
+practicalexam.bone,
+practicalexam.bone_pass_or_fail,
+practicalexam.g,
+practicalexam.g_pass_or_fail,
+practicalexam.d,
+practicalexam.d_pass_or_fail,
+practicalexam.ce,
+practicalexam.ce_pass_or_fail
+
+FROM
+practicalexam ,
+customer_register
+WHERE
+practicalexam.customer_register_id = customer_register.id AND
+practicalexam.customer_register_id = $P{id}]]>
+	</queryString>
+	<field name="examDate" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="a" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="a_pass_or_fail" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="b" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="b_pass_or_fail" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="bone" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="bone_pass_or_fail" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="g" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="g_pass_or_fail" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="d" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="d_pass_or_fail" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ce" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ce_pass_or_fail" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="34" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="0" y="0" width="147" height="27" uuid="e0b5c839-abf3-43ea-bd75-3618a2ceed29"/>
+				<textFieldExpression><![CDATA[$F{examDate}+"\n"+
+(($F{a_pass_or_fail}.contains("None")||$F{a_pass_or_fail}.contains("Waiting")?"":$F{a}+"-"+$F{a_pass_or_fail}))+" "+
+(($F{b_pass_or_fail}.contains("None")||$F{b_pass_or_fail}.contains("Waiting")?"":$F{b}+"-"+$F{b_pass_or_fail}))+" "+
+(($F{bone_pass_or_fail}.contains("None")||$F{bone_pass_or_fail}.contains("Waiting")?"":$F{bone}+"-"+$F{bone_pass_or_fail}))+" "+
+(($F{g_pass_or_fail}.contains("None")||$F{g_pass_or_fail}.contains("Waiting")?"":$F{g}+"-"+$F{g_pass_or_fail}))+" "+
+(($F{d_pass_or_fail}.contains("None")||$F{d_pass_or_fail}.contains("Waiting")?"":$F{d}+"-"+$F{d_pass_or_fail}))+" "+
+(($F{ce_pass_or_fail}.contains("None")||$F{ce_pass_or_fail}.contains("Waiting")?"":$F{ce}+"-"+$F{ce_pass_or_fail}))]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="1" y="30" width="129" height="1" uuid="9041f8f1-bfad-475c-bb09-5b32d3bf8bd6"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+</jasperReport>

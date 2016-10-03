@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="dsr4" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="487" leftMargin="72" rightMargin="36" topMargin="36" bottomMargin="36" whenResourceMissingType="Empty" uuid="6ab60648-e326-493e-a7e0-f97e20d55353">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="30"/>
+	<property name="ireport.callouts" value="##Wed Sep 28 12:19:48 IST 2016"/>
+	<parameter name="date" class="java.lang.String"/>
+	<parameter name="numbers_of_pass" class="java.lang.String"/>
+	<parameter name="pass_average" class="java.lang.String"/>
+	<parameter name="numbers_of_fails" class="java.lang.String"/>
+	<parameter name="fail_average" class="java.lang.String"/>
+	<parameter name="total" class="java.lang.String"/>
+	<field name="COLUMN_0" class="java.lang.Object"/>
+	<field name="COLUMN_1" class="java.lang.String"/>
+	<field name="COLUMN_2" class="java.lang.String"/>
+	<field name="COLUMN_3" class="java.lang.String"/>
+	<field name="COLUMN_4" class="java.lang.String"/>
+	<field name="COLUMN_5" class="java.lang.String"/>
+	<field name="COLUMN_6" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="20" width="487" height="20" forecolor="#006633" uuid="f959852a-ac9b-4d22-8983-8a968d18e88f"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[VIJAYA DRIVING SCHOOL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="40" width="487" height="20" forecolor="#006633" uuid="8eff4712-0400-44e5-b44d-450af3efb275"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="12" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Attendance for Written Test]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="387" y="30" width="100" height="20" forecolor="#006633" uuid="227648d7-8b1e-4fbc-b324-d981ab9c31e5"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DSR-04]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="22" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="29" height="20" forecolor="#006633" uuid="7991d03b-2e4e-4b94-80e2-e4bf5ca93b98"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="46" y="0" width="100" height="20" forecolor="#006633" uuid="49719737-0cbe-40e4-9c0c-6b7685c00b1f"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Calibri"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{date}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="31" splitType="Stretch">
+			<staticText>
+				<reportElement x="3" y="10" width="30" height="20" forecolor="#006633" uuid="5d358b65-7bca-41e7-92e4-f9e89149de10"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" isBold="true"/>
+				</textElement>
+				<text><![CDATA[S.No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="33" y="10" width="51" height="20" forecolor="#006633" uuid="bc7270b8-1db3-48fe-9900-60505d7caa00"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Admission No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="86" y="10" width="60" height="20" forecolor="#006633" uuid="7a7b3b73-ef67-4fad-80ce-bc58afd5d55d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Barcode]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="157" y="10" width="220" height="20" forecolor="#006633" uuid="c65f9ad0-4795-45b3-85ab-0a2df4c25921"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="378" y="10" width="37" height="20" forecolor="#006633" uuid="cb600c46-10e6-4656-ba5d-5285cae06dda"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pass]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="415" y="10" width="34" height="20" forecolor="#006633" uuid="a7e174be-13bd-45ec-9abc-aa2894a101c0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fail]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="451" y="10" width="36" height="20" forecolor="#006633" uuid="62041c2e-2abb-4a29-a098-cdd6d92271c6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Absent]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="9" width="487" height="1" forecolor="#006633" uuid="ea3d48fa-d304-46e1-a6b2-fc48e516f357"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="3" y="30" width="484" height="1" forecolor="#006633" uuid="3f106011-ceb7-4097-ab11-683cd3ba3c5a"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<textField>
+				<reportElement x="4" y="0" width="29" height="20" forecolor="#006633" uuid="e186de3e-dfda-45ca-beb2-7e5f1e82a5b1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{COLUMN_0}.toString()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="33" y="0" width="51" height="20" forecolor="#006633" uuid="548daca4-c21f-465a-ba76-6efa9319ce52"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{COLUMN_1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="86" y="0" width="60" height="20" forecolor="#006633" uuid="0d091288-2a4f-43f3-9886-4d44af726906"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{COLUMN_2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="157" y="0" width="220" height="20" forecolor="#006633" uuid="e9a28c6d-073c-465d-87ee-a441474bd570"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{COLUMN_3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="378" y="0" width="37" height="20" forecolor="#006633" uuid="75190d80-345b-4464-9525-63c4ebdf407f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{COLUMN_4}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="415" y="0" width="34" height="20" forecolor="#006633" uuid="e28d1f48-9b92-4f38-9092-afad1ddcbc3a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{COLUMN_5}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="451" y="0" width="36" height="20" forecolor="#006633" uuid="ff5e82a0-2f17-4f0a-95e9-f2fd13aa082c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{COLUMN_6}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="3" y="21" width="484" height="1" forecolor="#006633" uuid="517147f5-8083-4f69-a3fb-fe4fbae10bb6"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="1" y="-23" width="1" height="45" forecolor="#006633" uuid="f1b14fa7-9851-475c-9dd5-f2f224d98e70"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="29" y="-21" width="1" height="43" forecolor="#006633" uuid="6315f199-d7c3-4d8c-a976-c939613d159e"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="84" y="-21" width="1" height="43" forecolor="#006633" uuid="5f8e108e-d730-4bc3-890b-a61a08d9f364"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="150" y="-21" width="1" height="43" forecolor="#006633" uuid="168515bb-f090-4c91-99f7-a735d6c95cd9"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="377" y="-21" width="1" height="43" forecolor="#006633" uuid="459162f3-fab3-423b-a8a5-d75720387cbf"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="413" y="-21" width="1" height="43" forecolor="#006633" uuid="84faf4f4-1c0f-44e9-a003-54ab03f825c9"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="450" y="-21" width="1" height="43" forecolor="#006633" uuid="ec38dfe5-e7c0-42cd-bfbb-7ca3815a8d8d"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="486" y="-21" width="1" height="43" forecolor="#006633" uuid="1757c11d-353c-44f7-862a-6a58c6b10bf9"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="16"/>
+	</pageFooter>
+	<summary>
+		<band height="124" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="16" width="487" height="20" forecolor="#006633" uuid="7bdb6a74-8c3b-4781-981b-4e4853d1c04e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Summery of Result]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="36" width="203" height="20" forecolor="#006633" uuid="7dfd0982-8942-4420-98e0-a307eb7ddabb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" isBold="true"/>
+				</textElement>
+				<text><![CDATA[No of Pass]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="203" y="36" width="184" height="20" forecolor="#006633" uuid="af3455e5-a5f7-4dd2-af67-624fcb6e5bbd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" isBold="true"/>
+				</textElement>
+				<text><![CDATA[No of Fail]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="387" y="36" width="100" height="20" forecolor="#006633" uuid="0e649f50-c5b6-40a4-8aae-e2bc5ce6f78f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="56" width="100" height="20" forecolor="#006633" uuid="a14216d2-8283-4444-a1f5-6f365c998055"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Numbers]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="56" width="103" height="20" forecolor="#006633" uuid="b08a427a-1848-49c1-8ec3-f112a9ba61bc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Average(%)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="203" y="56" width="90" height="20" forecolor="#006633" uuid="e696b5e0-b588-4380-8bbd-298d03dfc422"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Numbers]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="293" y="56" width="94" height="20" forecolor="#006633" uuid="b546b06e-8bf1-43e2-ae19-0bb4a756b8a9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Average(%)]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="3" y="76" width="93" height="20" forecolor="#006633" uuid="31509282-6743-4168-93ed-049c7cf3aeb9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{numbers_of_pass}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="76" width="101" height="20" forecolor="#006633" uuid="6d879819-5518-40a8-b472-91c279110ee9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{pass_average}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="203" y="76" width="90" height="20" forecolor="#006633" uuid="2a2740b2-1512-4abf-abb8-35467110caf1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{numbers_of_fails}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="293" y="76" width="94" height="20" forecolor="#006633" uuid="0aab614d-9fc4-4c6a-b8d4-853acea7c900"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fail_average}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="1" y="19" width="485" height="1" forecolor="#006633" uuid="1471e654-8f9c-4489-a74c-a3ff5beb4b5d"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="1" y="37" width="485" height="1" forecolor="#006633" uuid="a481dcd0-6445-4cb0-9137-d4617c9ba663"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="1" y="55" width="485" height="1" forecolor="#006633" uuid="2507ba93-6dd7-4e4f-9e4d-687c8309c9bb"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="1" y="76" width="485" height="1" forecolor="#006633" uuid="4845ec54-1032-4dd7-af7f-4884d6944f3b"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="1" y="95" width="485" height="1" forecolor="#006633" uuid="6baf589b-9e64-4fcb-8c6e-69b701340397"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="1" y="19" width="1" height="76" forecolor="#006633" uuid="4f9a48f8-4c19-4d91-a6b1-d787d601fd12"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="96" y="56" width="1" height="39" forecolor="#006633" uuid="d5d56f47-20af-48b8-8f8d-3d3ddb0b6373"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="201" y="38" width="1" height="57" forecolor="#006633" uuid="0ac051ed-c3c0-461a-886f-c348ad38af75"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="293" y="56" width="1" height="39" forecolor="#006633" uuid="cd8059d4-9279-48fb-ae21-831b29f9c4a7"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="387" y="38" width="1" height="57" forecolor="#006633" uuid="2cf580f7-e254-4987-a4a0-59551d7f2046"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="485" y="20" width="1" height="76" forecolor="#006633" uuid="65a9c71e-35dc-49db-9c02-aa8ade47f66e"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="388" y="77" width="97" height="18" forecolor="#006633" uuid="e2beffb9-3456-430d-92c0-c19a3a172b16"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

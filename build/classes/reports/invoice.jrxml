@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="216" pageHeight="288" whenNoDataType="AllSectionsNoDetail" columnWidth="176" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ab361a4d-6b77-4f4a-aa21-25976cc3fa0b">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="invoiceid" class="java.lang.Object"/>
+	<parameter name="admissionno" class="java.lang.Object"/>
+	<parameter name="name" class="java.lang.Object"/>
+	<parameter name="class" class="java.lang.Object"/>
+	<parameter name="reason" class="java.lang.Object"/>
+	<parameter name="tot" class="java.lang.Object"/>
+	<parameter name="paid" class="java.lang.Object"/>
+	<parameter name="category" class="java.lang.Object"/>
+	<parameter name="user" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="45" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="176" height="15" forecolor="#FF3333" uuid="c9fdf94d-3ab0-4ad4-8692-ef4269cf65da"/>
+				<textElement textAlignment="Center">
+					<font fontName="Batang" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[VIJAYA LEARNERS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="14" width="176" height="16" uuid="8cb7d2cd-5b44-4bb9-89e5-fed92729a311"/>
+				<textElement textAlignment="Center">
+					<font fontName="Batang" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[38/2, Kandy Road, Kurunegala]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="29" width="176" height="14" uuid="74926604-f2d6-4fbc-8892-76ac7dd901f6"/>
+				<textElement textAlignment="Center">
+					<font fontName="Batang" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[TP : 037-222 39 69]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="43" width="176" height="1" uuid="8ee0c1ac-d486-4091-9965-38262cb57eac"/>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="187" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="71" height="14" uuid="8e56f00c-dc20-4896-a52c-29d4d7450df1"/>
+				<textElement>
+					<font fontName="Batang" size="10"/>
+				</textElement>
+				<text><![CDATA[Invoice No     : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="13" width="71" height="14" uuid="daf21e3d-afc1-4121-8d16-941ae3a46839"/>
+				<textElement>
+					<font fontName="Batang" size="10"/>
+				</textElement>
+				<text><![CDATA[Admission No : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="40" width="71" height="14" uuid="ac452af5-41fd-4fc3-ae53-411993ab1891"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Batang" size="10"/>
+				</textElement>
+				<text><![CDATA[Name     ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="106" width="71" height="14" uuid="ac452af5-41fd-4fc3-ae53-411993ab1891"/>
+				<textElement>
+					<font fontName="Batang" size="10"/>
+				</textElement>
+				<text><![CDATA[Class             : ]]></text>
+			</staticText>
+			<textField pattern="yyyy.MM.dd   hh:mm aaa">
+				<reportElement x="80" y="26" width="96" height="14" uuid="93b13dc9-a703-4447-ab77-1a811971f019"/>
+				<textElement>
+					<font fontName="Batang" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="26" width="71" height="14" uuid="ac452af5-41fd-4fc3-ae53-411993ab1891"/>
+				<textElement>
+					<font fontName="Batang" size="10"/>
+				</textElement>
+				<text><![CDATA[Date               :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="78" width="76" height="14" uuid="ac452af5-41fd-4fc3-ae53-411993ab1891"/>
+				<textElement>
+					<font fontName="Batang" size="10"/>
+				</textElement>
+				<text><![CDATA[Reason for Pay]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="92" width="71" height="14" uuid="ac452af5-41fd-4fc3-ae53-411993ab1891"/>
+				<textElement>
+					<font fontName="Batang" size="10"/>
+				</textElement>
+				<text><![CDATA[Amount          : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="120" width="71" height="14" uuid="ac452af5-41fd-4fc3-ae53-411993ab1891"/>
+				<textElement>
+					<font fontName="Batang" size="10"/>
+				</textElement>
+				<text><![CDATA[Paid by          : ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="80" y="0" width="96" height="14" uuid="d108e5d3-5c18-46f4-891d-25a93fd06a08"/>
+				<textElement>
+					<font fontName="Batang" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$P{invoiceid}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="80" y="13" width="97" height="14" uuid="557db2f4-59e8-4ab2-bd0f-a5a897e07ebe"/>
+				<textElement>
+					<font fontName="Batang"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$P{admissionno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="80" y="40" width="96" height="27" uuid="74c8e08f-085e-485d-8380-f5a980add8f3"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Batang" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$P{name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="82" y="106" width="94" height="14" uuid="ba89ca98-02aa-4c25-bd15-3959f2363487"/>
+				<textElement>
+					<font fontName="Batang"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$P{class}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="80" y="78" width="96" height="14" uuid="1890b406-1a36-429c-99f6-2939d2f5276a"/>
+				<textElement>
+					<font fontName="Batang"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$P{reason}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="97" y="92" width="79" height="14" uuid="32a52e6f-c066-48a0-b1c0-edeaeec23540"/>
+				<textElement>
+					<font fontName="Batang" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$P{paid}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="82" y="120" width="94" height="14" uuid="e9295930-93c9-46cc-a750-631d2d989e67"/>
+				<textElement>
+					<font fontName="Batang"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$P{category}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="160" width="176" height="14" uuid="ac452af5-41fd-4fc3-ae53-411993ab1891"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Batang" size="10"/>
+				</textElement>
+				<text><![CDATA[*Payments are non refundable!]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="82" y="92" width="15" height="14" uuid="06c47867-0584-43d8-8716-e5d13005a010"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Batang"/>
+				</textElement>
+				<text><![CDATA[Rs.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="80" y="146" width="96" height="14" uuid="6b29ee88-629a-49ab-a746-d6b3ad83f6e6"/>
+				<textElement>
+					<font fontName="Batang"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$P{tot}.toString().substring(0,3)]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="173" width="176" height="14" uuid="88a3f737-713f-4b62-a1f8-69aef33d6692"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Batang" size="8"/>
+				</textElement>
+				<text><![CDATA[System By Lasitha - 071 24 70 399]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="146" width="71" height="14" uuid="5cb634e2-8a4a-40fc-8fd1-da94b0b85998"/>
+				<textElement>
+					<font fontName="Batang"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{user}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="75" y="0" width="5" height="14" uuid="df8a4126-83a6-41bf-8edf-f8341d38e51d"/>
+				<textElement>
+					<font fontName="Batang"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="75" y="78" width="5" height="14" uuid="1c92cd1b-9101-4903-8f48-cf444176f50c"/>
+				<textElement>
+					<font fontName="Batang"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="75" y="12" width="5" height="14" uuid="92d278ea-763f-49d1-9d4f-fddf1df154c9"/>
+				<textElement>
+					<font fontName="Batang"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="75" y="26" width="5" height="14" uuid="044a250f-c7ce-4935-9319-8bd23d09e7f2"/>
+				<textElement>
+					<font fontName="Batang"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="75" y="92" width="5" height="14" uuid="3513cbfc-23ad-4d89-88fd-733eb0250b15"/>
+				<textElement>
+					<font fontName="Batang"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="75" y="106" width="5" height="14" uuid="8397765c-43be-4aea-be6b-077f9f1a9548"/>
+				<textElement>
+					<font fontName="Batang"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="75" y="120" width="5" height="14" uuid="7a704813-ff84-4a79-87d6-cb927e06df08"/>
+				<textElement>
+					<font fontName="Batang"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="75" y="146" width="5" height="14" uuid="df341cfd-9373-41da-a5f2-cf34e74c4bf1"/>
+				<textElement>
+					<font fontName="Batang"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="75" y="40" width="5" height="14" uuid="0e46627c-03b3-4d62-a4f7-a87de9021ee6"/>
+				<textElement>
+					<font fontName="Batang"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+</jasperReport>
