@@ -481,6 +481,66 @@ public class writtenExamDetails extends javax.swing.JDialog {
     }
 
     private void submit() {
+        
+        if (isDateExist()) {
+            com.Messages.errorjoption("You entered date is already exist!");
+        }else{
+           save();
+        }
+        
+       
+    }
+
+    private boolean isNotIDAlreadyExistInDB() {
+        boolean bol = true;
+
+//        try {
+//            
+//        } catch (Exception e) {
+//        }
+        try {
+
+            ResultSet rs = model.db.getData("SELECT\n"
+                    + "customer_register.barcode\n"
+                    + "FROM\n"
+                    + "customer_register\n"
+                    + "WHERE\n"
+                    + "customer_register.admission_no = '" + txtadmissiono.getText().trim() + "'");
+            if (rs.next()) {
+                bol = false;
+                Messages.warningjoption("Barcode Already exist! ");
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return bol;
+    }
+
+    private boolean isDateExist() {
+    
+        boolean bol=false;
+        String selectDate=txtexamdate.getText();
+        
+        for (int i = 0; i < tbl.getRowCount(); i++) {
+           
+            String tblDate=tbl.getValueAt(i, 1).toString();
+            
+            if (selectDate.equals(tblDate)) {
+                //System.out.println("ok "+tblDate);
+                bol=true;
+                break;
+            }
+            
+        }
+        
+       
+        return bol;
+    
+    }
+
+    private void save() {
         DefaultTableModel dtm = (DefaultTableModel) tbl.getModel();
 //        boolean bol = true;
 
@@ -533,32 +593,5 @@ public class writtenExamDetails extends javax.swing.JDialog {
 
         }
         clear();
-    }
-
-    private boolean isNotIDAlreadyExistInDB() {
-        boolean bol = true;
-
-//        try {
-//            
-//        } catch (Exception e) {
-//        }
-        try {
-
-            ResultSet rs = model.db.getData("SELECT\n"
-                    + "customer_register.barcode\n"
-                    + "FROM\n"
-                    + "customer_register\n"
-                    + "WHERE\n"
-                    + "customer_register.admission_no = '" + txtadmissiono.getText().trim() + "'");
-            if (rs.next()) {
-                bol = false;
-                Messages.warningjoption("Barcode Already exist! ");
-
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return bol;
     }
 }

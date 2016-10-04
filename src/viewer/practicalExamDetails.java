@@ -698,7 +698,16 @@ public class practicalExamDetails extends javax.swing.JDialog {
     String n;
 
     private void submit() {
+        if (isDateExist()) {
+            com.Messages.errorjoption("You entered date is already exist!");
+        }else{
+           saveandothers();
+        } 
+       
+    }
 
+    private void saveandothers() {
+      
         if (cmba.getSelectedIndex() == 1) {
             n = "";
 
@@ -819,4 +828,26 @@ public class practicalExamDetails extends javax.swing.JDialog {
         clear();
 
     }
+
+    private boolean isDateExist() {
+       boolean bol=false;
+        String selectDate=txtexamdate.getText();
+        
+        for (int i = 0; i < tbl.getRowCount(); i++) {
+           
+            String tblDate=tbl.getValueAt(i, 1).toString();
+            
+            if (selectDate.equals(tblDate)) {
+                //System.out.println("ok "+tblDate);
+                bol=true;
+                break;
+            }
+            
+        }
+        
+       
+        return bol;
+    }
+    
+
 }
