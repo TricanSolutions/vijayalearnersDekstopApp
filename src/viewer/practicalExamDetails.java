@@ -698,11 +698,9 @@ public class practicalExamDetails extends javax.swing.JDialog {
     String n;
 
     private void submit() {
-        if (isDateExist()) {
-            com.Messages.errorjoption("You entered date is already exist!");
-        }else{
+        
            saveandothers();
-        } 
+        
        
     }
 
@@ -788,6 +786,7 @@ public class practicalExamDetails extends javax.swing.JDialog {
 
         } else {
             if (txtid.getText().isEmpty()) {
+                if(!isDateExist()){
                 try {
                     model.db.putData("INSERT INTO practicalexam(customer_register_id,examDate,a,a_pass_or_fail,b,b_pass_or_fail,bone,bone_pass_or_fail,"
                             + "g,g_pass_or_fail,d,d_pass_or_fail,ce,ce_pass_or_fail)"
@@ -802,6 +801,10 @@ public class practicalExamDetails extends javax.swing.JDialog {
                     loadtabl();
                 } catch (Exception e) {
                     e.printStackTrace();
+                }
+                }else{
+                com.Messages.errorjoption("Date is already exist");
+                
                 }
 
             } else {

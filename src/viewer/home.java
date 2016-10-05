@@ -73,6 +73,9 @@ public class home extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItem22 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem18 = new javax.swing.JMenuItem();
@@ -110,7 +113,7 @@ public class home extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 454, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 456, Short.MAX_VALUE)
         );
 
         jMenu1.setText("File");
@@ -188,6 +191,26 @@ public class home extends javax.swing.JFrame {
         jMenu2.add(jMenuItem4);
 
         jMenuBar1.add(jMenu2);
+
+        jMenu3.setText("Attendance");
+
+        jMenuItem6.setText("Theory Class");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem6);
+
+        jMenuItem22.setText("Practical Class");
+        jMenuItem22.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem22ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem22);
+
+        jMenuBar1.add(jMenu3);
 
         jMenu6.setText("View");
 
@@ -415,7 +438,7 @@ public class home extends javax.swing.JFrame {
             String reportSource = "src/reports/bigreport.jrxml";
             Map<String, Object> params = new HashMap<String, Object>();
 
-          //  params.put("tot", String.valueOf(txttotalapplication.getText()));
+            //  params.put("tot", String.valueOf(txttotalapplication.getText()));
             JasperReport jasperReport = JasperCompileManager.compileReport(reportSource);
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             Connection con = (Connection) DriverManager.getConnection(ConstantData.dbConnectionURL, ConstantData.dbUsername, ConstantData.dbPassword);
@@ -442,6 +465,14 @@ public class home extends javax.swing.JFrame {
     private void jMenuItem21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem21ActionPerformed
         new DSR5(this, false).setVisible(true);
     }//GEN-LAST:event_jMenuItem21ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        new IndividualTraineesAttendanceTheoryClass(this, false).setVisible(true);
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem22ActionPerformed
+        new IndividualTraineesAttendancePracticalClass(this, false).setVisible(true);
+    }//GEN-LAST:event_jMenuItem22ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -484,6 +515,7 @@ public class home extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
@@ -503,9 +535,11 @@ public class home extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem20;
     private javax.swing.JMenuItem jMenuItem21;
+    private javax.swing.JMenuItem jMenuItem22;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;

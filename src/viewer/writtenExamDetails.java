@@ -482,11 +482,9 @@ public class writtenExamDetails extends javax.swing.JDialog {
 
     private void submit() {
         
-        if (isDateExist()) {
-            com.Messages.errorjoption("You entered date is already exist!");
-        }else{
+       
            save();
-        }
+       
         
        
     }
@@ -494,10 +492,6 @@ public class writtenExamDetails extends javax.swing.JDialog {
     private boolean isNotIDAlreadyExistInDB() {
         boolean bol = true;
 
-//        try {
-//            
-//        } catch (Exception e) {
-//        }
         try {
 
             ResultSet rs = model.db.getData("SELECT\n"
@@ -551,7 +545,7 @@ public class writtenExamDetails extends javax.swing.JDialog {
         } else {
             if (txtid.getText().isEmpty()) {
                
-                   
+                   if(!isDateExist()){
                         
                           try {
                             model.db.putData("INSERT INTO writtenexamresult(customer_register_id,examDate,writtenResult,passOrFail)"
@@ -573,7 +567,10 @@ public class writtenExamDetails extends javax.swing.JDialog {
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-                    
+                   }else{
+                   com.Messages.errorjoption("Date is already exist");
+                   
+                   }
                 
             } else {
                 try {

@@ -216,7 +216,6 @@ public class customerRegisternew extends javax.swing.JDialog {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        txtlicenno.setText("None");
         txtlicenno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtlicennoActionPerformed(evt);
