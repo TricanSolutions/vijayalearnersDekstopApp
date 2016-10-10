@@ -8,12 +8,10 @@ package viewer;
 import com.Messages;
 import java.sql.ResultSet;
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
 import javax.swing.table.DefaultTableModel;
-import org.jfree.data.time.Day;
 
 /**
  *
@@ -31,6 +29,7 @@ public class IndividualTraineesAttendancePracticalClass extends javax.swing.JDia
         Date date = new Date();
         String currentyear = dateFormat.format(date);
         txt_date.setText(currentyear);
+        addtabledefault();
 
     }
 
@@ -57,6 +56,13 @@ public class IndividualTraineesAttendancePracticalClass extends javax.swing.JDia
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_practical = new javax.swing.JTable();
+        jLabel7 = new javax.swing.JLabel();
+        txt_instructor_barcode = new javax.swing.JTextField();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        jLabel8 = new javax.swing.JLabel();
+        txt_instructor_name = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        txt_vehicle = new javax.swing.JTextField();
 
         jLabel6.setText("jLabel6");
 
@@ -71,7 +77,7 @@ public class IndividualTraineesAttendancePracticalClass extends javax.swing.JDia
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel2.setText("Barcode");
+        jLabel2.setText("Student Barcode");
 
         jLabel5.setText("Date");
 
@@ -90,6 +96,7 @@ public class IndividualTraineesAttendancePracticalClass extends javax.swing.JDia
             }
         });
 
+        txt_date.setEditable(false);
         try {
             txt_date.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-##-##")));
         } catch (java.text.ParseException ex) {
@@ -109,37 +116,59 @@ public class IndividualTraineesAttendancePracticalClass extends javax.swing.JDia
 
         tbl_practical.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"", "Topic 1", null, null, null, "V1", "Mr.Nimal"},
-                {"", "Topic 2", null, null, null, "V1", "Mr.Vijitha"},
-                {"", "Topic 3", null, null, null, "V2", "Mr.Nimal"},
-                {"", "Topic 4", null, null, null, "v3", "Mr.Nimal"},
-                {"", "Topic 5", null, null, null, "v2", "Mr.Nimal"},
-                {"", null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {"-", "Topic 1", "-", "-", "-", "V1", "Mr.Nimal", null},
+                {"-", "Topic 2", "-", "-", "-", "V1", "Mr.Vijitha", null},
+                {"-", "Topic 3", "-", "-", "-", "V2", "Mr.Nimal", null},
+                {"-", "Topic 4", "-", "-", "-", "v3", "Mr.Nimal", null},
+                {"-", "Topic 5", "-", "-", "-", "v2", "Mr.Nimal", null},
+                {"-", "-", "-", "-", "-", "-", "-", null},
+                {"-", "-", "-", "-", "-", "-", "-", null},
+                {"-", "-", "-", "-", "-", "-", "-", null},
+                {"-", "-", "-", "-", "-", "-", "-", null}
             },
             new String [] {
-                "Date", "Topic", "Starting Time", "Ending Time", "Duration", "Vehicle", "Name of the Lecture"
+                "Date", "Topic", "Starting Time", "Ending Time", "Duration", "Vehicle", "Name of the Lecture", "id"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                true, true, true, true, true, true, true, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tbl_practical);
+        if (tbl_practical.getColumnModel().getColumnCount() > 0) {
+            tbl_practical.getColumnModel().getColumn(7).setMinWidth(100);
+            tbl_practical.getColumnModel().getColumn(7).setPreferredWidth(100);
+            tbl_practical.getColumnModel().getColumn(7).setMaxWidth(100);
+        }
+
+        jLabel7.setText("Instructor Barcode");
+
+        txt_instructor_barcode.setEditable(false);
+        txt_instructor_barcode.setEnabled(false);
+        txt_instructor_barcode.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_instructor_barcodeKeyReleased(evt);
+            }
+        });
+
+        jCheckBox1.setText("Active");
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setText("Name");
+
+        txt_instructor_name.setEnabled(false);
+
+        jLabel9.setText("Vehicle");
+
+        txt_vehicle.setEnabled(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -150,30 +179,55 @@ public class IndividualTraineesAttendancePracticalClass extends javax.swing.JDia
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txt_instructor_barcode, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
+                            .addComponent(txt_barcode))
+                        .addGap(37, 37, 37)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jCheckBox1))
                         .addGap(18, 18, 18)
-                        .addComponent(txt_barcode, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
-                        .addComponent(txt_admission_no, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(jLabel4)
-                        .addGap(18, 18, 18)
-                        .addComponent(txt_name, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel5)
-                        .addGap(18, 18, 18)
-                        .addComponent(txt_date, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(txt_admission_no, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(30, 30, 30)
+                                .addComponent(jLabel4)
+                                .addGap(18, 18, 18)
+                                .addComponent(txt_name, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel5)
+                                .addGap(18, 18, 18)
+                                .addComponent(txt_date, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton1))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txt_instructor_name, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txt_vehicle, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(17, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(txt_instructor_barcode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCheckBox1)
+                    .addComponent(jLabel8)
+                    .addComponent(txt_instructor_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9)
+                    .addComponent(txt_vehicle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txt_barcode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -184,8 +238,8 @@ public class IndividualTraineesAttendancePracticalClass extends javax.swing.JDia
                     .addComponent(jLabel5)
                     .addComponent(txt_date, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -197,7 +251,9 @@ public class IndividualTraineesAttendancePracticalClass extends javax.swing.JDia
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -216,13 +272,51 @@ public class IndividualTraineesAttendancePracticalClass extends javax.swing.JDia
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
+        DefaultTableModel dtm = (DefaultTableModel) tbl_practical.getModel();
+
         if (txt_barcode.getText().isEmpty() || txt_admission_no.getText().isEmpty() || txt_name.getText().isEmpty() || txt_date.getText().isEmpty()) {
             com.Messages.errorjoption("Please fill the data fields");
             txt_barcode.grabFocus();
         } else {
 
-           
+            if (isALreadyExistadmission()) {
+                com.Messages.normaljoption("admission no already exist");
 
+                try {
+
+                    for (int i = 0; i < tbl_practical.getRowCount(); i++) {
+                        String id;
+                        String date;
+                        String topic;
+                        String starting_time;
+                        String ending_time;
+                        String duration;
+                        String vehicle;
+                        String instructor;
+//                   
+                        date = tbl_practical.getValueAt(i, 0).toString();
+                        topic = tbl_practical.getValueAt(i, 1).toString();
+                        starting_time = tbl_practical.getValueAt(i, 2).toString();
+                        ending_time = tbl_practical.getValueAt(i, 3).toString();
+                        duration = tbl_practical.getValueAt(i, 4).toString();
+                        vehicle = tbl_practical.getValueAt(i, 5).toString();
+                        instructor = tbl_practical.getValueAt(i, 6).toString();
+                        id = tbl_practical.getValueAt(i, 7).toString();
+//                   
+
+                        model.db.putData("UPDATE practical_topics set date='" + date + "',name='" + topic + "',starting_time='" + starting_time + "',"
+                                + "ending_time='" + ending_time + "',duration_of_time='" + duration + "',vehicle='" + vehicle + "',"
+                                + "instructor='" + instructor + "',status='" + 2 + "' WHERE id='" + id + "'");
+//                        com.Messages.normaljoption("data updated test");
+
+                    }
+
+                    com.Messages.normaljoption("Data Updated");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            } else {
                 try {
                     model.db.putData("INSERT INTO attendance_practical(barcode,admission,status,customer_register_id)values"
                             + "('" + txt_barcode.getText() + "','" + txt_admission_no.getText() + "','" + 1 + "','" + cus_id + "')");
@@ -238,16 +332,24 @@ public class IndividualTraineesAttendancePracticalClass extends javax.swing.JDia
 
                     }
                     for (int i = 0; i < tbl_practical.getRowCount(); i++) {
-                        String date = tbl_practical.getValueAt(i, 0).toString();
-                        String topic = tbl_practical.getValueAt(i, 1).toString();
-                        String starting_time = tbl_practical.getValueAt(i, 2).toString();
-                        String ending_time = tbl_practical.getValueAt(i, 3).toString();
-                        String duration = tbl_practical.getValueAt(i, 4).toString();
-                        String vehicle = tbl_practical.getValueAt(i, 5).toString();
-                        String instructor = tbl_practical.getValueAt(i, 6).toString();
-
+                        String date;
+                        String topic;
+                        String starting_time;
+                        String ending_time;
+                        String duration;
+                        String vehicle;
+                        String instructor;
+//                   
+                        date = tbl_practical.getValueAt(i, 0).toString();
+                        topic = tbl_practical.getValueAt(i, 1).toString();
+                        starting_time = tbl_practical.getValueAt(i, 2).toString();
+                        ending_time = tbl_practical.getValueAt(i, 3).toString();
+                        duration = tbl_practical.getValueAt(i, 4).toString();
+                        vehicle = tbl_practical.getValueAt(i, 5).toString();
+                        instructor = tbl_practical.getValueAt(i, 6).toString();
+//                   
                         model.db.putData("INSERT INTO practical_topics(date,name,starting_time,ending_time,duration_of_time,vehicle,instructor,status,attendance_practical_id)values"
-                                + "('" + date + "','" + topic + "','" + starting_time + "','" + ending_time + "','" + duration + "','" + vehicle + "','"+instructor+"','"+1+"','"+maxid+"')");
+                                + "('" + date + "','" + topic + "','" + starting_time + "','" + ending_time + "','" + duration + "','" + vehicle + "','" + instructor + "','" + 1 + "','" + maxid + "')");
 
                     }
 
@@ -256,9 +358,13 @@ public class IndividualTraineesAttendancePracticalClass extends javax.swing.JDia
                     e.printStackTrace();
                 }
 
-            
+            }
 
         }
+
+        addtabledefault();
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
     int cus_id = 0;
     private void txt_admission_noKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_admission_noKeyReleased
@@ -279,7 +385,7 @@ public class IndividualTraineesAttendancePracticalClass extends javax.swing.JDia
                 System.out.println("customer id" + cus_id);
                 txt_barcode.setText(rs.getString(2));
                 txt_name.setText(rs.getString(3));
-//                addtotable();
+                student_practicale_attend();
 
             }
         } catch (Exception e) {
@@ -319,7 +425,9 @@ public class IndividualTraineesAttendancePracticalClass extends javax.swing.JDia
     }//GEN-LAST:event_txt_barcodeKeyReleased
 
     private void txt_barcodeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_barcodeKeyPressed
+        DefaultTableModel dtm = (DefaultTableModel) tbl_practical.getModel();
         if (evt.getKeyCode() == 10) {
+
             try {
                 ResultSet rs = model.db.getData("SELECT\n"
                         + "customer_register.admission_no,\n"
@@ -337,8 +445,8 @@ public class IndividualTraineesAttendancePracticalClass extends javax.swing.JDia
                     System.out.println("customer id" + cus_id);
                     txt_admission_no.setText(rs.getString(1));
                     txt_name.setText(rs.getString(3));
-                    gettime();
-                    addtotable();
+
+                    student_practicale_attend();
 
                 }
 
@@ -348,6 +456,42 @@ public class IndividualTraineesAttendancePracticalClass extends javax.swing.JDia
 
         }
     }//GEN-LAST:event_txt_barcodeKeyPressed
+
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        if (txt_instructor_barcode.getText().isEmpty() && jCheckBox1.isSelected()) {
+            txt_instructor_barcode.setEditable(true);
+            txt_instructor_barcode.setEnabled(true);
+            txt_instructor_barcode.grabFocus();
+
+        } else {
+            txt_instructor_barcode.setEditable(false);
+            txt_instructor_barcode.setEnabled(false);
+
+        }
+
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
+
+    private void txt_instructor_barcodeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_instructor_barcodeKeyReleased
+        try {
+            ResultSet rs = model.db.getData("SELECT\n"
+                    + "instructor.id,\n"
+                    + "instructor.barcode,\n"
+                    + "instructor.`name`,\n"
+                    + "instructor.vehicle_name\n"
+                    + "FROM\n"
+                    + "instructor\n"
+                    + "WHERE\n"
+                    + "instructor.barcode = '" + txt_instructor_barcode.getText() + "'");
+
+            if (rs.next()) {
+                txt_instructor_name.setText(rs.getString(3));
+                txt_vehicle.setText(rs.getString(4));
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_txt_instructor_barcodeKeyReleased
 
     /**
      * @param args the command line arguments
@@ -400,19 +544,26 @@ public class IndividualTraineesAttendancePracticalClass extends javax.swing.JDia
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tbl_practical;
     private javax.swing.JTextField txt_admission_no;
     private javax.swing.JTextField txt_barcode;
     private javax.swing.JFormattedTextField txt_date;
+    private javax.swing.JTextField txt_instructor_barcode;
+    private javax.swing.JTextField txt_instructor_name;
     private javax.swing.JTextField txt_name;
+    private javax.swing.JTextField txt_vehicle;
     // End of variables declaration//GEN-END:variables
 
     private boolean isDateAndAdmissionExist() {
@@ -449,11 +600,13 @@ public class IndividualTraineesAttendancePracticalClass extends javax.swing.JDia
                 val1 = (String) dtm.getValueAt(i, 0);
                 System.out.println(val1);
 
-                if (val1 == "" || val1==null) {
+                if (val1.equals("-") || val1.equals(null)) {
                     dtm.setValueAt(txt_date.getText(), i, 0);
                     dtm.setValueAt(currenttime, i, 2);
                     dtm.setValueAt(endtime, i, 3);
                     dtm.setValueAt(practiceTime, i, 4);
+                    dtm.setValueAt(txt_vehicle.getText(), i, 5);
+                    dtm.setValueAt(txt_instructor_name.getText(), i, 6);
                     return;
 
                 } else {
@@ -470,26 +623,23 @@ public class IndividualTraineesAttendancePracticalClass extends javax.swing.JDia
     }
     String currenttime = "";
     String endtime;
-    String practiceTime= "00:40:00";
-    
+    String practiceTime = "00:40:00";
 
     private void gettime() {
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
         Date date = new Date();
         currenttime = dateFormat.format(date);
-       
+
         String dateStart = currenttime;
-        String dateStop =practiceTime ;
+        String dateStop = practiceTime;
 
         //HH converts hour in 24 hours format (0-23), day calculation
         SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
         format.setTimeZone(TimeZone.getTimeZone("UTC"));
-        
 
         Date d1 = null;
         Date d2 = null;
-        
 
         try {
             d1 = format.parse(dateStart);
@@ -499,9 +649,7 @@ public class IndividualTraineesAttendancePracticalClass extends javax.swing.JDia
             long addition = d2.getTime() + d1.getTime();
             String date3 = format.format(new Date(addition));
             System.out.println(date3);
-            endtime=date3;
-
-            
+            endtime = date3;
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -531,5 +679,102 @@ public class IndividualTraineesAttendancePracticalClass extends javax.swing.JDia
 //        System.out.println("hour " + (date2.getTime() + date1.getTime()) / (60 * 60 * 1000));
 //        System.out.println("min " + (date2.getTime() + date1.getTime()) / (60 * 1000) % 60);
 //        System.out.println("sec " + (date2.getTime() + date1.getTime()) / (24 * 60 * 60 * 1000));
+    }
+
+    private void addtabledefault() {
+        DefaultTableModel dtm = (DefaultTableModel) tbl_practical.getModel();
+
+        dtm.setRowCount(0);
+        for (int i = 0; i < 5; i++) {
+            String date[] = {"-", "-", "-", "-", "-"};
+            String topic[] = {"topic_1", "topic_2", "topic_3", "topic_4", "topic_5"};
+            String starting_time[] = {"-", "-", "-", "-", "-"};
+            String ending_time[] = {"-", "-", "-", "-", "-"};
+            String duration[] = {"-", "-", "-", "-", "-"};
+            String vehicle[] = {"-", "-", "-", "-", "-"};
+            String instructor[] = {"-", "-", "-", "-", "-"};
+
+            Object arr[] = {date[i], topic[i], starting_time[i], ending_time[i], duration[i], vehicle[i], instructor[i]};
+            dtm.addRow(arr);
+        }
+
+    }
+
+    private void student_practicale_attend() {
+        DefaultTableModel dtm = (DefaultTableModel) tbl_practical.getModel();
+        if (isALreadyExistadmission()) {
+
+            try {
+                dtm.setRowCount(0);
+                ResultSet rs1 = model.db.getData("SELECT\n"
+                        + "practical_topics.date,\n"
+                        + "practical_topics.`name`,\n"
+                        + "practical_topics.starting_time,\n"
+                        + "practical_topics.ending_time,\n"
+                        + "practical_topics.duration_of_time,\n"
+                        + "practical_topics.vehicle,\n"
+                        + "practical_topics.instructor,\n"
+                        + "practical_topics.id\n"
+                        + "FROM\n"
+                        + "practical_topics ,\n"
+                        + "attendance_practical\n"
+                        + "WHERE\n"
+                        + "practical_topics.attendance_practical_id = attendance_practical.id AND\n"
+                        + "attendance_practical.barcode = '" + txt_barcode.getText() + "'");
+
+                while (rs1.next()) {
+                    String date = rs1.getString(1);
+                    String topic = rs1.getString(2);
+                    String s_time = rs1.getString(3);
+                    String e_time = rs1.getString(4);
+                    String duration = rs1.getString(5);
+                    String veh = rs1.getString(6);
+                    String instr = rs1.getString(7);
+                    String id = rs1.getString(8);
+
+                    Object arr[] = {date, topic, s_time, e_time, duration, veh, instr,id};
+                    dtm.addRow(arr);
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        } else {
+
+            addtabledefault();
+
+        }
+
+        gettime();
+        addtotable();
+
+    }
+    int practical_topic_id = 0;
+
+    private boolean isALreadyExistadmission() {
+        boolean bol = false;
+        try {
+            ResultSet rs = model.db.getData("SELECT\n"
+                    + "attendance_practical.admission,\n"
+                    + "attendance_practical.id\n"
+                    + "FROM\n"
+                    + "attendance_practical\n"
+                    + "WHERE\n"
+                    + "attendance_practical.admission = '" + txt_admission_no.getText() + "'");
+            if (rs.next()) {
+                practical_topic_id = rs.getInt(2);
+//                com.Messages.normaljoption("practical_topic_id " + practical_topic_id);
+                bol = true;
+//                Messages.errorjoption("This NIC Number Already Exist ! ");
+//                txtnic.grabFocus();
+//                txtnic.selectAll();
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return bol;
     }
 }

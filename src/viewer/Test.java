@@ -17,8 +17,7 @@ public class Test {
 
     public static void main(String[] args) {
         try {
-            model.db.putData("UPDATE downpayment set total='2000'"
-                    + " where admissonno='5018' and id='18' ");
+             model.db.putData("UPDATE practical_topics set date='2016-10-09' WHERE id='" + 34 + "' AND attendance_practical_id='" +12 + "'");
             
             
             
