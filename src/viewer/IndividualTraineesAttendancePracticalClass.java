@@ -87,6 +87,11 @@ public class IndividualTraineesAttendancePracticalClass extends javax.swing.JDia
                 jButton1ActionPerformed(evt);
             }
         });
+        jButton1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton1KeyPressed(evt);
+            }
+        });
 
         jLabel4.setText("Name");
 
@@ -103,6 +108,8 @@ public class IndividualTraineesAttendancePracticalClass extends javax.swing.JDia
             ex.printStackTrace();
         }
 
+        txt_barcode.setEditable(false);
+        txt_barcode.setEnabled(false);
         txt_barcode.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txt_barcodeKeyPressed(evt);
@@ -111,6 +118,8 @@ public class IndividualTraineesAttendancePracticalClass extends javax.swing.JDia
                 txt_barcodeKeyReleased(evt);
             }
         });
+
+        txt_name.setEditable(false);
 
         jLabel3.setText("Admission No");
 
@@ -272,97 +281,7 @@ public class IndividualTraineesAttendancePracticalClass extends javax.swing.JDia
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        DefaultTableModel dtm = (DefaultTableModel) tbl_practical.getModel();
-
-        if (txt_barcode.getText().isEmpty() || txt_admission_no.getText().isEmpty() || txt_name.getText().isEmpty() || txt_date.getText().isEmpty()) {
-            com.Messages.errorjoption("Please fill the data fields");
-            txt_barcode.grabFocus();
-        } else {
-
-            if (isALreadyExistadmission()) {
-                com.Messages.normaljoption("admission no already exist");
-
-                try {
-
-                    for (int i = 0; i < tbl_practical.getRowCount(); i++) {
-                        String id;
-                        String date;
-                        String topic;
-                        String starting_time;
-                        String ending_time;
-                        String duration;
-                        String vehicle;
-                        String instructor;
-//                   
-                        date = tbl_practical.getValueAt(i, 0).toString();
-                        topic = tbl_practical.getValueAt(i, 1).toString();
-                        starting_time = tbl_practical.getValueAt(i, 2).toString();
-                        ending_time = tbl_practical.getValueAt(i, 3).toString();
-                        duration = tbl_practical.getValueAt(i, 4).toString();
-                        vehicle = tbl_practical.getValueAt(i, 5).toString();
-                        instructor = tbl_practical.getValueAt(i, 6).toString();
-                        id = tbl_practical.getValueAt(i, 7).toString();
-//                   
-
-                        model.db.putData("UPDATE practical_topics set date='" + date + "',name='" + topic + "',starting_time='" + starting_time + "',"
-                                + "ending_time='" + ending_time + "',duration_of_time='" + duration + "',vehicle='" + vehicle + "',"
-                                + "instructor='" + instructor + "',status='" + 2 + "' WHERE id='" + id + "'");
-//                        com.Messages.normaljoption("data updated test");
-
-                    }
-
-                    com.Messages.normaljoption("Data Updated");
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-            } else {
-                try {
-                    model.db.putData("INSERT INTO attendance_practical(barcode,admission,status,customer_register_id)values"
-                            + "('" + txt_barcode.getText() + "','" + txt_admission_no.getText() + "','" + 1 + "','" + cus_id + "')");
-
-                    int maxid = 0;
-                    ResultSet rs = model.db.getData("SELECT\n"
-                            + "MAX(attendance_practical.id)\n"
-                            + "FROM\n"
-                            + "attendance_practical");
-
-                    if (rs.next()) {
-                        maxid = rs.getInt(1);
-
-                    }
-                    for (int i = 0; i < tbl_practical.getRowCount(); i++) {
-                        String date;
-                        String topic;
-                        String starting_time;
-                        String ending_time;
-                        String duration;
-                        String vehicle;
-                        String instructor;
-//                   
-                        date = tbl_practical.getValueAt(i, 0).toString();
-                        topic = tbl_practical.getValueAt(i, 1).toString();
-                        starting_time = tbl_practical.getValueAt(i, 2).toString();
-                        ending_time = tbl_practical.getValueAt(i, 3).toString();
-                        duration = tbl_practical.getValueAt(i, 4).toString();
-                        vehicle = tbl_practical.getValueAt(i, 5).toString();
-                        instructor = tbl_practical.getValueAt(i, 6).toString();
-//                   
-                        model.db.putData("INSERT INTO practical_topics(date,name,starting_time,ending_time,duration_of_time,vehicle,instructor,status,attendance_practical_id)values"
-                                + "('" + date + "','" + topic + "','" + starting_time + "','" + ending_time + "','" + duration + "','" + vehicle + "','" + instructor + "','" + 1 + "','" + maxid + "')");
-
-                    }
-
-                    com.Messages.normaljoption("Data saved");
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-            }
-
-        }
-
-        addtabledefault();
+      insertandupdate();
 
 
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -386,42 +305,82 @@ public class IndividualTraineesAttendancePracticalClass extends javax.swing.JDia
                 txt_barcode.setText(rs.getString(2));
                 txt_name.setText(rs.getString(3));
                 student_practicale_attend();
+                jButton1.grabFocus();
+                
 
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
+        
 
 
     }//GEN-LAST:event_txt_admission_noKeyReleased
 
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        if (txt_instructor_barcode.getText().isEmpty() && jCheckBox1.isSelected()) {
+            txt_instructor_barcode.setEditable(true);
+            txt_instructor_barcode.setEnabled(true);
+            txt_instructor_barcode.grabFocus();
+
+        } else {
+            txt_instructor_barcode.setEditable(false);
+            txt_instructor_barcode.setEnabled(false);
+
+        }
+
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
+
+    private void txt_instructor_barcodeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_instructor_barcodeKeyReleased
+        try {
+            ResultSet rs = model.db.getData("SELECT\n"
+                    + "instructor.id,\n"
+                    + "instructor.barcode,\n"
+                    + "instructor.`name`,\n"
+                    + "instructor.vehicle_name\n"
+                    + "FROM\n"
+                    + "instructor\n"
+                    + "WHERE\n"
+                    + "instructor.barcode = '" + txt_instructor_barcode.getText() + "'");
+
+            if (rs.next()) {
+                txt_instructor_name.setText(rs.getString(3));
+                txt_vehicle.setText(rs.getString(4));
+                txt_admission_no.grabFocus();
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_txt_instructor_barcodeKeyReleased
+
     private void txt_barcodeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_barcodeKeyReleased
-//        try {
-//            ResultSet rs = model.db.getData("SELECT\n"
-//                    + "customer_register.admission_no,\n"
-//                    + "customer_register.id,\n"
-//                    + "uniquecustomerdetails.namewithinitial\n"
-//                    + "FROM\n"
-//                    + "customer_register ,\n"
-//                    + "uniquecustomerdetails\n"
-//                    + "WHERE\n"
-//                    + "customer_register.barcode = '" + txt_barcode.getText() + "' AND\n"
-//                    + "customer_register.uniqueCustomerDetails_id = uniquecustomerdetails.id");
-//
-//            if (rs.next()) {
-//                cus_id = rs.getInt(2);
-//                System.out.println("customer id" + cus_id);
-//                txt_admission_no.setText(rs.getString(1));
-//                txt_name.setText(rs.getString(3));
-//                addtotable();
-//
-//            }
-//
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        
-//        gettime();
+        //        try {
+        //            ResultSet rs = model.db.getData("SELECT\n"
+        //                    + "customer_register.admission_no,\n"
+        //                    + "customer_register.id,\n"
+        //                    + "uniquecustomerdetails.namewithinitial\n"
+        //                    + "FROM\n"
+        //                    + "customer_register ,\n"
+        //                    + "uniquecustomerdetails\n"
+        //                    + "WHERE\n"
+        //                    + "customer_register.barcode = '" + txt_barcode.getText() + "' AND\n"
+        //                    + "customer_register.uniqueCustomerDetails_id = uniquecustomerdetails.id");
+        //
+        //            if (rs.next()) {
+        //                cus_id = rs.getInt(2);
+        //                System.out.println("customer id" + cus_id);
+        //                txt_admission_no.setText(rs.getString(1));
+        //                txt_name.setText(rs.getString(3));
+        //                addtotable();
+        //
+        //            }
+        //
+        //        } catch (Exception e) {
+        //            e.printStackTrace();
+        //        }
+        //
+        //        gettime();
     }//GEN-LAST:event_txt_barcodeKeyReleased
 
     private void txt_barcodeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_barcodeKeyPressed
@@ -457,41 +416,12 @@ public class IndividualTraineesAttendancePracticalClass extends javax.swing.JDia
         }
     }//GEN-LAST:event_txt_barcodeKeyPressed
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
-        if (txt_instructor_barcode.getText().isEmpty() && jCheckBox1.isSelected()) {
-            txt_instructor_barcode.setEditable(true);
-            txt_instructor_barcode.setEnabled(true);
-            txt_instructor_barcode.grabFocus();
-
-        } else {
-            txt_instructor_barcode.setEditable(false);
-            txt_instructor_barcode.setEnabled(false);
-
-        }
-
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
-
-    private void txt_instructor_barcodeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_instructor_barcodeKeyReleased
-        try {
-            ResultSet rs = model.db.getData("SELECT\n"
-                    + "instructor.id,\n"
-                    + "instructor.barcode,\n"
-                    + "instructor.`name`,\n"
-                    + "instructor.vehicle_name\n"
-                    + "FROM\n"
-                    + "instructor\n"
-                    + "WHERE\n"
-                    + "instructor.barcode = '" + txt_instructor_barcode.getText() + "'");
-
-            if (rs.next()) {
-                txt_instructor_name.setText(rs.getString(3));
-                txt_vehicle.setText(rs.getString(4));
-
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }//GEN-LAST:event_txt_instructor_barcodeKeyReleased
+    private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
+       if(evt.getKeyCode()==10){
+       insertandupdate();
+       
+       }
+    }//GEN-LAST:event_jButton1KeyPressed
 
     /**
      * @param args the command line arguments
@@ -732,7 +662,7 @@ public class IndividualTraineesAttendancePracticalClass extends javax.swing.JDia
                     String instr = rs1.getString(7);
                     String id = rs1.getString(8);
 
-                    Object arr[] = {date, topic, s_time, e_time, duration, veh, instr,id};
+                    Object arr[] = {date, topic, s_time, e_time, duration, veh, instr, id};
                     dtm.addRow(arr);
                 }
 
@@ -748,6 +678,7 @@ public class IndividualTraineesAttendancePracticalClass extends javax.swing.JDia
 
         gettime();
         addtotable();
+        
 
     }
     int practical_topic_id = 0;
@@ -776,5 +707,103 @@ public class IndividualTraineesAttendancePracticalClass extends javax.swing.JDia
         }
 
         return bol;
+    }
+
+    private void insertandupdate() {
+          DefaultTableModel dtm = (DefaultTableModel) tbl_practical.getModel();
+
+        if (txt_admission_no.getText().isEmpty() || txt_name.getText().isEmpty() || txt_date.getText().isEmpty()) {
+            com.Messages.errorjoption("Please fill the data fields");
+            txt_barcode.grabFocus();
+        } else {
+
+            if (isALreadyExistadmission()) {
+//                com.Messages.normaljoption("admission no already exist");
+
+                try {
+
+                    for (int i = 0; i < tbl_practical.getRowCount(); i++) {
+                        String id;
+                        String date;
+                        String topic;
+                        String starting_time;
+                        String ending_time;
+                        String duration;
+                        String vehicle;
+                        String instructor;
+//                   
+                        date = tbl_practical.getValueAt(i, 0).toString();
+                        topic = tbl_practical.getValueAt(i, 1).toString();
+                        starting_time = tbl_practical.getValueAt(i, 2).toString();
+                        ending_time = tbl_practical.getValueAt(i, 3).toString();
+                        duration = tbl_practical.getValueAt(i, 4).toString();
+                        vehicle = tbl_practical.getValueAt(i, 5).toString();
+                        instructor = tbl_practical.getValueAt(i, 6).toString();
+                        id = tbl_practical.getValueAt(i, 7).toString();
+//                   
+
+                        model.db.putData("UPDATE practical_topics set date='" + date + "',name='" + topic + "',starting_time='" + starting_time + "',"
+                                + "ending_time='" + ending_time + "',duration_of_time='" + duration + "',vehicle='" + vehicle + "',"
+                                + "instructor='" + instructor + "',status='" + 2 + "' WHERE id='" + id + "'");
+//                        com.Messages.normaljoption("data updated test");
+
+                    }
+
+                    com.Messages.normaljoption("Data Updated");
+                 
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            } else {
+                try {
+                    model.db.putData("INSERT INTO attendance_practical(barcode,admission,status,customer_register_id)values"
+                            + "('" + txt_barcode.getText() + "','" + txt_admission_no.getText() + "','" + 1 + "','" + cus_id + "')");
+
+                    int maxid = 0;
+                    ResultSet rs = model.db.getData("SELECT\n"
+                            + "MAX(attendance_practical.id)\n"
+                            + "FROM\n"
+                            + "attendance_practical");
+
+                    if (rs.next()) {
+                        maxid = rs.getInt(1);
+
+                    }
+                    for (int i = 0; i < tbl_practical.getRowCount(); i++) {
+                        String date;
+                        String topic;
+                        String starting_time;
+                        String ending_time;
+                        String duration;
+                        String vehicle;
+                        String instructor;
+//                   
+                        date = tbl_practical.getValueAt(i, 0).toString();
+                        topic = tbl_practical.getValueAt(i, 1).toString();
+                        starting_time = tbl_practical.getValueAt(i, 2).toString();
+                        ending_time = tbl_practical.getValueAt(i, 3).toString();
+                        duration = tbl_practical.getValueAt(i, 4).toString();
+                        vehicle = tbl_practical.getValueAt(i, 5).toString();
+                        instructor = tbl_practical.getValueAt(i, 6).toString();
+//                   
+                        model.db.putData("INSERT INTO practical_topics(date,name,starting_time,ending_time,duration_of_time,vehicle,instructor,status,attendance_practical_id)values"
+                                + "('" + date + "','" + topic + "','" + starting_time + "','" + ending_time + "','" + duration + "','" + vehicle + "','" + instructor + "','" + 1 + "','" + maxid + "')");
+
+                    }
+
+                    com.Messages.normaljoption("Data saved");
+                    
+                    
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+        }
+        txt_admission_no.setText("");
+        txt_admission_no.grabFocus();
+        addtabledefault();
     }
 }
