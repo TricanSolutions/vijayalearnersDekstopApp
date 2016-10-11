@@ -133,7 +133,18 @@ public class IndividualTraineesAttendancePracticalClass extends javax.swing.JDia
                 {"-", "-", "-", "-", "-", "-", "-", null},
                 {"-", "-", "-", "-", "-", "-", "-", null},
                 {"-", "-", "-", "-", "-", "-", "-", null},
-                {"-", "-", "-", "-", "-", "-", "-", null}
+                {"-", "-", "-", "-", "-", "-", "-", null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
                 "Date", "Topic", "Starting Time", "Ending Time", "Duration", "Vehicle", "Name of the Lecture", "id"
@@ -615,14 +626,14 @@ public class IndividualTraineesAttendancePracticalClass extends javax.swing.JDia
         DefaultTableModel dtm = (DefaultTableModel) tbl_practical.getModel();
 
         dtm.setRowCount(0);
-        for (int i = 0; i < 5; i++) {
-            String date[] = {"-", "-", "-", "-", "-"};
-            String topic[] = {"topic_1", "topic_2", "topic_3", "topic_4", "topic_5"};
-            String starting_time[] = {"-", "-", "-", "-", "-"};
-            String ending_time[] = {"-", "-", "-", "-", "-"};
-            String duration[] = {"-", "-", "-", "-", "-"};
-            String vehicle[] = {"-", "-", "-", "-", "-"};
-            String instructor[] = {"-", "-", "-", "-", "-"};
+        for (int i = 0; i < 20; i++) {
+            String date[] = {"-", "-", "-", "-", "-","-", "-", "-", "-", "-","-", "-", "-", "-", "-","-", "-", "-", "-", "-"};
+            String topic[] = {"topic_1", "topic_2", "topic_3", "topic_4", "topic_5","topic_6", "topic_7", "topic_8", "topic_9", "topic_10","topic_11", "topic_12", "topic_13", "topic_14", "topic_15","topic_16", "topic_17", "topic_18", "topic_19", "topic_20"};
+            String starting_time[] = {"-", "-", "-", "-", "-","-", "-", "-", "-", "-","-", "-", "-", "-", "-","-", "-", "-", "-", "-"};
+            String ending_time[] = {"-", "-", "-", "-", "-","-", "-", "-", "-", "-","-", "-", "-", "-", "-","-", "-", "-", "-", "-"};
+            String duration[] = {"-", "-", "-", "-", "-","-", "-", "-", "-", "-","-", "-", "-", "-", "-","-", "-", "-", "-", "-"};
+            String vehicle[] = {"-", "-", "-", "-", "-","-", "-", "-", "-", "-","-", "-", "-", "-", "-","-", "-", "-", "-", "-"};
+            String instructor[] = {"-", "-", "-", "-", "-","-", "-", "-", "-", "-","-", "-", "-", "-", "-","-", "-", "-", "-", "-"};
 
             Object arr[] = {date[i], topic[i], starting_time[i], ending_time[i], duration[i], vehicle[i], instructor[i]};
             dtm.addRow(arr);

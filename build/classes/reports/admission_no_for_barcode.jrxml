@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="admission_no_for_barcode" columnCount="10" printOrder="Horizontal" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="55" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" whenResourceMissingType="Empty" uuid="becdb0e4-672f-4d98-b264-aabe9f31b119">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="from" class="java.lang.String"/>
+	<parameter name="to" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+customer_register.admission_no
+FROM
+customer_register
+WHERE
+customer_register.admission_no BETWEEN $P{from} AND $P{to}]]>
+	</queryString>
+	<field name="admission_no" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="42" splitType="Stretch">
+			<componentElement>
+				<reportElement mode="Opaque" x="5" y="5" width="56" height="30" uuid="83ec4293-9ddd-4681-a0fc-1694815d0c6f"/>
+				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="3of9" drawText="true" checksumRequired="false" barWidth="0">
+					<jr:codeExpression><![CDATA[$F{admission_no}]]></jr:codeExpression>
+				</jr:barbecue>
+			</componentElement>
+			<line>
+				<reportElement x="0" y="41" width="43" height="1" uuid="96785d95-f242-4a36-8006-bb9f15856062"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="0" y="0" width="43" height="1" uuid="b1d81270-eaed-47c7-8e24-e4343278626b"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="42" y="1" width="1" height="40" uuid="5538c316-916d-4da0-9de0-015fbeb27728"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="1" y="1" width="1" height="40" uuid="f40b83b2-3337-42ca-a091-b3b5f713bcdc"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+</jasperReport>

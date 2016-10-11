@@ -235,7 +235,7 @@
             <Component class="javax.swing.JTable" name="tbl_practical">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="8" rowCount="9">
+                  <Table columnCount="8" rowCount="20">
                     <Column editable="true" title="Date" type="java.lang.Object">
                       <Data value="-"/>
                       <Data value="-"/>
@@ -246,6 +246,17 @@
                       <Data value="-"/>
                       <Data value="-"/>
                       <Data value="-"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
                     </Column>
                     <Column editable="true" title="Topic" type="java.lang.Object">
                       <Data value="Topic 1"/>
@@ -257,6 +268,17 @@
                       <Data value="-"/>
                       <Data value="-"/>
                       <Data value="-"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
                     </Column>
                     <Column editable="true" title="Starting Time" type="java.lang.Object">
                       <Data value="-"/>
@@ -268,6 +290,17 @@
                       <Data value="-"/>
                       <Data value="-"/>
                       <Data value="-"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
                     </Column>
                     <Column editable="true" title="Ending Time" type="java.lang.Object">
                       <Data value="-"/>
@@ -279,6 +312,17 @@
                       <Data value="-"/>
                       <Data value="-"/>
                       <Data value="-"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
                     </Column>
                     <Column editable="true" title="Duration" type="java.lang.Object">
                       <Data value="-"/>
@@ -290,6 +334,17 @@
                       <Data value="-"/>
                       <Data value="-"/>
                       <Data value="-"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
                     </Column>
                     <Column editable="true" title="Vehicle" type="java.lang.Object">
                       <Data value="V1"/>
@@ -301,6 +356,17 @@
                       <Data value="-"/>
                       <Data value="-"/>
                       <Data value="-"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
                     </Column>
                     <Column editable="true" title="Name of the Lecture" type="java.lang.Object">
                       <Data value="Mr.Nimal"/>
@@ -312,6 +378,17 @@
                       <Data value="-"/>
                       <Data value="-"/>
                       <Data value="-"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
                     </Column>
                     <Column editable="false" title="id" type="java.lang.Object"/>
                   </Table>

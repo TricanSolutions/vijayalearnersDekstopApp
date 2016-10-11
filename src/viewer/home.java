@@ -86,8 +86,11 @@ public class home extends javax.swing.JFrame {
         jMenuItem13 = new javax.swing.JMenuItem();
         jMenuItem14 = new javax.swing.JMenuItem();
         jMenuItem19 = new javax.swing.JMenuItem();
+        jMenuItem23 = new javax.swing.JMenuItem();
         jMenuItem20 = new javax.swing.JMenuItem();
         jMenuItem21 = new javax.swing.JMenuItem();
+        jMenuItem24 = new javax.swing.JMenuItem();
+        jMenuItem25 = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenu8 = new javax.swing.JMenu();
@@ -290,6 +293,15 @@ public class home extends javax.swing.JFrame {
         });
         jMenu5.add(jMenuItem19);
 
+        jMenuItem23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/png/tick_32.png"))); // NOI18N
+        jMenuItem23.setText("DS Register - 02");
+        jMenuItem23.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem23ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem23);
+
         jMenuItem20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/png/tick_32.png"))); // NOI18N
         jMenuItem20.setText("DS Register - 04");
         jMenuItem20.addActionListener(new java.awt.event.ActionListener() {
@@ -307,6 +319,24 @@ public class home extends javax.swing.JFrame {
             }
         });
         jMenu5.add(jMenuItem21);
+
+        jMenuItem24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/png/tick_32.png"))); // NOI18N
+        jMenuItem24.setText("Barcode Print for Students");
+        jMenuItem24.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem24ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem24);
+
+        jMenuItem25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/png/tick_32.png"))); // NOI18N
+        jMenuItem25.setText("Barcode Print for Instructor");
+        jMenuItem25.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem25ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem25);
 
         jMenuBar1.add(jMenu5);
 
@@ -474,6 +504,38 @@ public class home extends javax.swing.JFrame {
         new IndividualTraineesAttendancePracticalClass(this, false).setVisible(true);
     }//GEN-LAST:event_jMenuItem22ActionPerformed
 
+    private void jMenuItem23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem23ActionPerformed
+        new DSR2(this, false).setVisible(true);
+    }//GEN-LAST:event_jMenuItem23ActionPerformed
+
+    private void jMenuItem24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem24ActionPerformed
+        new printBarcode_admission(this, false).setVisible(true);
+    }//GEN-LAST:event_jMenuItem24ActionPerformed
+
+    private void jMenuItem25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem25ActionPerformed
+        try {
+            //JRTableModelDataSource dataSource;
+            // dataSource = new JRTableModelDataSource(tbltrial.getModel());
+            //String reportSource = "c:\\reports\\viewInvoice.jrxml";
+            String reportSource = "src/reports/barcode_for_instructor.jrxml";
+            Map<String, Object> params = new HashMap<String, Object>();
+
+            //  params.put("tot", String.valueOf(txttotalapplication.getText()));
+            JasperReport jasperReport = JasperCompileManager.compileReport(reportSource);
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
+            Connection con = (Connection) DriverManager.getConnection(ConstantData.dbConnectionURL, ConstantData.dbUsername, ConstantData.dbPassword);
+            JasperPrint jp = JasperFillManager.fillReport(jasperReport, params, con);
+//            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, params);
+
+            JasperViewer.viewReport(jp, false);
+
+            // JasperPrintManager.printReport(jasperPrint, false);
+            // this.dispose();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jMenuItem25ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -536,6 +598,9 @@ public class home extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem20;
     private javax.swing.JMenuItem jMenuItem21;
     private javax.swing.JMenuItem jMenuItem22;
+    private javax.swing.JMenuItem jMenuItem23;
+    private javax.swing.JMenuItem jMenuItem24;
+    private javax.swing.JMenuItem jMenuItem25;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;

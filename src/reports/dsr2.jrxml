@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="dsr2" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="539" leftMargin="36" rightMargin="20" topMargin="20" bottomMargin="20" whenResourceMissingType="Empty" uuid="bac55e11-049f-404e-a762-5a94027769e0">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="admission_no" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\soft\\vijayalearnersDekstopApp\\src\\reports\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+theory_topics.`name`,
+theory_topics.starting_time,
+theory_topics.end_time,
+theory_topics.lecturer_name,
+attendance_theoryclass.date,
+uniquecustomerdetails.namewithinitial,
+attendance_theoryclass.admissionNo
+FROM
+theory_topics ,
+attendance_theoryclass ,
+customer_register ,
+uniquecustomerdetails
+WHERE
+theory_topics.attendance_theoryclass_id = attendance_theoryclass.id AND
+attendance_theoryclass.admissionNo = $P{admission_no} AND
+attendance_theoryclass.customer_register_id = customer_register.id AND
+customer_register.uniqueCustomerDetails_id = uniquecustomerdetails.id
+
+]]>
+	</queryString>
+	<field name="name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="starting_time" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="end_time" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="lecturer_name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="date" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="namewithinitial" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="admissionNo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="44" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="438" y="12" width="100" height="20" forecolor="#FF00FF" uuid="662af532-714f-44a9-98ee-6ce114d988c3"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DSR-02]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="0" y="2" width="539" height="20" forecolor="#FF00FF" uuid="55f55ef0-0bd0-403a-882f-1b761ec4c717"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[VIJAYA DRIVING SCHOOL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="22" width="539" height="20" forecolor="#FF00FF" uuid="e538867c-264d-4f05-ad95-9f68bfe45ec7"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="12" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Individual Trainees Attendance for Lectures & Practical Lessons]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="49" splitType="Stretch">
+			<staticText>
+				<reportElement x="1" y="6" width="73" height="20" forecolor="#FF00FF" uuid="06fda22c-0704-48b5-8f92-144217bfb3ec"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Trainee Name :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="28" width="539" height="20" forecolor="#FF00FF" uuid="95365470-b5c7-4b1f-b194-c02488e4f8ba"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Lectures]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="74" y="8" width="156" height="18" forecolor="#FF00FF" uuid="f3513251-8dc6-4bf4-8370-ed613e88d810"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{namewithinitial}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="407" y="6" width="73" height="20" forecolor="#FF00FF" uuid="32aa41d6-60bd-4bca-a25b-19b6c08e053a"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Admission No :]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="480" y="6" width="58" height="20" forecolor="#FF00FF" uuid="6775b52a-1f25-4dcd-8a8b-d35b82244e3b"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{admissionNo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="12" y="0" width="89" height="20" forecolor="#FF00FF" uuid="076f5cbc-b291-4c57-b498-98ac54d6ad24"/>
+				<textElement>
+					<font fontName="Calibri"/>
+				</textElement>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="0" width="148" height="20" forecolor="#FF00FF" uuid="f34b6d16-8de1-4535-b013-1d8bb4d5a5d3"/>
+				<textElement>
+					<font fontName="Calibri"/>
+				</textElement>
+				<text><![CDATA[Topic]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="255" y="0" width="68" height="20" forecolor="#FF00FF" uuid="b6dc63b4-685b-42a5-912e-ac5f9358df6a"/>
+				<textElement>
+					<font fontName="Calibri"/>
+				</textElement>
+				<text><![CDATA[Starting time]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="323" y="0" width="84" height="20" forecolor="#FF00FF" uuid="aa6852f9-0b9a-45e1-aa72-8772238f9bb6"/>
+				<textElement>
+					<font fontName="Calibri"/>
+				</textElement>
+				<text><![CDATA[End time]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="418" y="0" width="100" height="20" forecolor="#FF00FF" uuid="a43a07b0-bba2-4fcd-b373-871822406ea5"/>
+				<textElement>
+					<font fontName="Calibri"/>
+				</textElement>
+				<text><![CDATA[Lecturer name]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="0" width="538" height="1" uuid="0ceb6a3a-ef98-415d-88dc-cf02f7a53e41"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="1" y="19" width="538" height="1" uuid="d268c6ca-4199-4e40-9c4a-e806eb9c68b6"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="0" y="1" width="1" height="18" uuid="18120fb9-7ab6-4cb2-be02-f6ddb26e6de6"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="88" y="1" width="1" height="18" uuid="ebf430e6-ea9c-4afe-afb8-47d1a0ef898a"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="244" y="1" width="1" height="19" uuid="8312e604-de25-472c-a002-2a897c54f1a1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="317" y="1" width="1" height="18" uuid="a54722cf-49f0-4223-ae9f-2b944fd79f4b"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="391" y="1" width="1" height="18" uuid="dcf6bdb3-f6d2-47f8-b87a-6a6ee092509b"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="538" y="1" width="1" height="18" uuid="fb330f0b-4e13-479c-bab5-c8c46c6d5a7e"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<textField>
+				<reportElement x="12" y="0" width="89" height="17" forecolor="#FF00FF" uuid="f25a8e20-d024-4167-b23e-978de325f75f"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="0" width="148" height="17" forecolor="#FF00FF" uuid="f438d33e-24e7-42cb-8e81-a4c387632472"/>
+				<textElement>
+					<font fontName="Calibri"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="256" y="0" width="67" height="17" forecolor="#FF00FF" uuid="80db02da-0bf0-4f77-ab02-f929cd95d19c"/>
+				<textElement>
+					<font fontName="Calibri"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{starting_time}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="323" y="0" width="84" height="17" forecolor="#FF00FF" uuid="4fb313bd-5d28-46c0-b4ee-6b0cd97f8801"/>
+				<textElement>
+					<font fontName="Calibri"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{end_time}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="418" y="0" width="100" height="17" forecolor="#FF00FF" uuid="fb5bc023-0edd-428f-87a8-a12f2b6afe45"/>
+				<textElement>
+					<font fontName="Calibri"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lecturer_name}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="16" width="538" height="1" uuid="72e3a6e8-252b-459d-bc52-33517e1247f3"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="88" y="-1" width="1" height="18" uuid="1c89a6a7-da74-483d-9aad-7f9827ac8c02"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="244" y="-1" width="1" height="18" uuid="7eb49a99-b279-415f-ae11-4e51ae36fd25"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="317" y="0" width="1" height="18" uuid="62f207b9-84a6-4903-8646-13946417d187"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="391" y="-1" width="1" height="19" uuid="697d0f27-b200-4628-a583-ba026151648d"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="538" y="-1" width="1" height="18" uuid="a38883d4-ace2-43a4-8101-8a398f3525f5"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="0" y="0" width="1" height="18" uuid="1a1a3419-677b-4c0f-8f7a-d8d25778eafb"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="44" splitType="Stretch">
+			<staticText>
+				<reportElement x="425" y="2" width="91" height="20" forecolor="#FF00FF" uuid="48cb301d-31f3-44a9-9ba9-58cbdcfbdedd"/>
+				<textElement verticalAlignment="Bottom"/>
+				<text><![CDATA[.................................]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="425" y="22" width="91" height="20" forecolor="#FF00FF" uuid="2eace645-3b69-4680-8cfd-149e87526e42"/>
+				<text><![CDATA[Principal/D.S Owner]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="19" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="1" width="537" height="17" forecolor="#FF00FF" uuid="45c05d04-24d4-419c-a973-d62c76627d75"/>
+				<subreportParameter name="admission_no">
+					<subreportParameterExpression><![CDATA[$P{admission_no}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "dsr2_subreport1.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</summary>
+</jasperReport>
