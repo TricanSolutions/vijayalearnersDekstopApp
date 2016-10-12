@@ -25,9 +25,7 @@ WHERE
 theory_topics.attendance_theoryclass_id = attendance_theoryclass.id AND
 attendance_theoryclass.admissionNo = $P{admission_no} AND
 attendance_theoryclass.customer_register_id = customer_register.id AND
-customer_register.uniqueCustomerDetails_id = uniquecustomerdetails.id
-
-]]>
+customer_register.uniqueCustomerDetails_id = uniquecustomerdetails.id]]>
 	</queryString>
 	<field name="name" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>

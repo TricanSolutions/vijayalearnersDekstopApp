@@ -5,9 +5,9 @@
  */
 package viewer;
 
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.TimeZone;
 
 /**
  *
@@ -16,13 +16,40 @@ import java.util.logging.Logger;
 public class Test {
 
     public static void main(String[] args) {
+        String oldtime="02:30:25";
+        String addnewtime="00:00:01";
+        String nowtime="02:30:27";
+       SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
+        format.setTimeZone(TimeZone.getTimeZone("UTC"));
+        
+        Date d1 = null;
+        Date d2 = null;
+        Date d3 = null;
+        
         try {
-             model.db.putData("UPDATE practical_topics set date='2016-10-09' WHERE id='" + 34 + "' AND attendance_practical_id='" +12 + "'");
+            d1 = format.parse(oldtime);
+            d2 = format.parse(nowtime);
+            d3 = format.parse(addnewtime);
             
             
+
+            //in milliseconds
+            long addition = d3.getTime() + d1.getTime();
+            System.out.println("addition mili "+addition);
+            long now=d2.getTime();
+            System.out.println("now mili "+now);
+            String afteraddition = format.format(new Date(addition));
+            System.out.println(afteraddition);
+            if(addition < now ){
+                System.out.println("still cant");
             
-        } catch (SQLException ex) {
-            Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
+            }else if(addition>now){
+                System.out.println("ok");
+            
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

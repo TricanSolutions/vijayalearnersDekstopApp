@@ -221,9 +221,7 @@ public class IndividualTraineesAttendancePracticalClass extends javax.swing.JDia
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel5)
                                 .addGap(18, 18, 18)
-                                .addComponent(txt_date, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton1))
+                                .addComponent(txt_date, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -232,6 +230,8 @@ public class IndividualTraineesAttendancePracticalClass extends javax.swing.JDia
                                 .addComponent(jLabel9)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txt_vehicle, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -292,7 +292,7 @@ public class IndividualTraineesAttendancePracticalClass extends javax.swing.JDia
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-      insertandupdate();
+        insertandupdate();
 
 
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -316,14 +316,13 @@ public class IndividualTraineesAttendancePracticalClass extends javax.swing.JDia
                 txt_barcode.setText(rs.getString(2));
                 txt_name.setText(rs.getString(3));
                 student_practicale_attend();
-                jButton1.grabFocus();
-                
+                insertandupdate();
+//                jButton1.grabFocus();
 
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
 
 
     }//GEN-LAST:event_txt_admission_noKeyReleased
@@ -428,10 +427,10 @@ public class IndividualTraineesAttendancePracticalClass extends javax.swing.JDia
     }//GEN-LAST:event_txt_barcodeKeyPressed
 
     private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
-       if(evt.getKeyCode()==10){
-       insertandupdate();
-       
-       }
+        if (evt.getKeyCode() == 10) {
+            insertandupdate();
+
+        }
     }//GEN-LAST:event_jButton1KeyPressed
 
     /**
@@ -627,13 +626,13 @@ public class IndividualTraineesAttendancePracticalClass extends javax.swing.JDia
 
         dtm.setRowCount(0);
         for (int i = 0; i < 20; i++) {
-            String date[] = {"-", "-", "-", "-", "-","-", "-", "-", "-", "-","-", "-", "-", "-", "-","-", "-", "-", "-", "-"};
-            String topic[] = {"topic_1", "topic_2", "topic_3", "topic_4", "topic_5","topic_6", "topic_7", "topic_8", "topic_9", "topic_10","topic_11", "topic_12", "topic_13", "topic_14", "topic_15","topic_16", "topic_17", "topic_18", "topic_19", "topic_20"};
-            String starting_time[] = {"-", "-", "-", "-", "-","-", "-", "-", "-", "-","-", "-", "-", "-", "-","-", "-", "-", "-", "-"};
-            String ending_time[] = {"-", "-", "-", "-", "-","-", "-", "-", "-", "-","-", "-", "-", "-", "-","-", "-", "-", "-", "-"};
-            String duration[] = {"-", "-", "-", "-", "-","-", "-", "-", "-", "-","-", "-", "-", "-", "-","-", "-", "-", "-", "-"};
-            String vehicle[] = {"-", "-", "-", "-", "-","-", "-", "-", "-", "-","-", "-", "-", "-", "-","-", "-", "-", "-", "-"};
-            String instructor[] = {"-", "-", "-", "-", "-","-", "-", "-", "-", "-","-", "-", "-", "-", "-","-", "-", "-", "-", "-"};
+            String date[] = {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"};
+            String topic[] = {"topic_1", "topic_2", "topic_3", "topic_4", "topic_5", "topic_6", "topic_7", "topic_8", "topic_9", "topic_10", "topic_11", "topic_12", "topic_13", "topic_14", "topic_15", "topic_16", "topic_17", "topic_18", "topic_19", "topic_20"};
+            String starting_time[] = {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"};
+            String ending_time[] = {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"};
+            String duration[] = {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"};
+            String vehicle[] = {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"};
+            String instructor[] = {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"};
 
             Object arr[] = {date[i], topic[i], starting_time[i], ending_time[i], duration[i], vehicle[i], instructor[i]};
             dtm.addRow(arr);
@@ -688,8 +687,16 @@ public class IndividualTraineesAttendancePracticalClass extends javax.swing.JDia
         }
 
         gettime();
-        addtotable();
-        
+
+        if (isAlreadyDateAndTimeRange()) {
+//           com.Messages.errorjoption("Must spent 2 hour");
+           
+            txt_admission_no.grabFocus();
+           
+        } else {
+            addtotable();
+
+        }
 
     }
     int practical_topic_id = 0;
@@ -721,7 +728,7 @@ public class IndividualTraineesAttendancePracticalClass extends javax.swing.JDia
     }
 
     private void insertandupdate() {
-          DefaultTableModel dtm = (DefaultTableModel) tbl_practical.getModel();
+        DefaultTableModel dtm = (DefaultTableModel) tbl_practical.getModel();
 
         if (txt_admission_no.getText().isEmpty() || txt_name.getText().isEmpty() || txt_date.getText().isEmpty()) {
             com.Messages.errorjoption("Please fill the data fields");
@@ -760,8 +767,8 @@ public class IndividualTraineesAttendancePracticalClass extends javax.swing.JDia
 
                     }
 
-                    com.Messages.normaljoption("Data Updated");
-                 
+//                    com.Messages.normaljoption("Data Updated");
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -803,9 +810,8 @@ public class IndividualTraineesAttendancePracticalClass extends javax.swing.JDia
 
                     }
 
-                    com.Messages.normaljoption("Data saved");
-                    
-                    
+//                    com.Messages.normaljoption("Data saved");
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -814,7 +820,73 @@ public class IndividualTraineesAttendancePracticalClass extends javax.swing.JDia
 
         }
         txt_admission_no.setText("");
+        txt_barcode.setText("");
+        txt_name.setText("");
         txt_admission_no.grabFocus();
         addtabledefault();
+    }
+
+    private boolean isAlreadyDateAndTimeRange() {
+
+        boolean bol = false;
+        try {
+            ResultSet rs = model.db.getData("SELECT\n"
+                    + "practical_topics.date,\n"
+                    + "practical_topics.starting_time\n"
+                    + "FROM\n"
+                    + "practical_topics\n"
+                    + "WHERE\n"
+                    + "practical_topics.attendance_practical_id = '" + practical_topic_id + "' AND\n"
+                    + "practical_topics.date = '"+txt_date.getText()+"'");
+            while (rs.next()) {
+               
+
+                String oldtime = rs.getString(2);
+                String addnewtime = "02:00:00";
+                String nowtime = currenttime;
+                SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
+                format.setTimeZone(TimeZone.getTimeZone("UTC"));
+
+                Date d1 = null;
+                Date d2 = null;
+                Date d3 = null;
+
+                try {
+                    d1 = format.parse(oldtime);
+                    d2 = format.parse(nowtime);
+                    d3 = format.parse(addnewtime);
+
+                    //in milliseconds
+                    long addition = d3.getTime() + d1.getTime();
+                    System.out.println("addition mili " + addition);
+                    long now = d2.getTime();
+                    System.out.println("now mili " + now);
+                    String afteraddition = format.format(new Date(addition));
+                    System.out.println(afteraddition);
+                    if (addition < now ) {
+                        System.out.println("still cant");
+                        bol = false;
+
+                    } else if (addition > now ) {
+                        System.out.println("ok");
+                        bol = true;
+
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+//                com.Messages.normaljoption("practical_topic_id " + practical_topic_id);
+//                Messages.errorjoption("This NIC Number Already Exist ! ");
+//                txtnic.grabFocus();
+//                txtnic.selectAll();
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return bol;
     }
 }
