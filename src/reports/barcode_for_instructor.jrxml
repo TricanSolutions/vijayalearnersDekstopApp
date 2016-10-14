@@ -7,97 +7,43 @@
 		<band splitType="Stretch"/>
 	</background>
 	<columnHeader>
-		<band height="30">
+		<band height="61">
 			<componentElement>
-				<reportElement x="5" y="5" width="41" height="21" uuid="d8aee8ac-7e3d-414a-b25b-5bf2f340743a"/>
-				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="2of7" drawText="true" checksumRequired="false">
+				<reportElement x="15" y="5" width="70" height="38" forecolor="#000000" uuid="d8aee8ac-7e3d-414a-b25b-5bf2f340743a"/>
+				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="USD4" drawText="true" checksumRequired="false">
 					<jr:codeExpression><![CDATA["100100"]]></jr:codeExpression>
 				</jr:barbecue>
 			</componentElement>
 			<componentElement>
-				<reportElement x="55" y="5" width="41" height="21" uuid="b1ed51da-63a0-4bc7-a05e-1ead4dc2bb57"/>
+				<reportElement x="112" y="5" width="70" height="38" uuid="b1ed51da-63a0-4bc7-a05e-1ead4dc2bb57"/>
 				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="2of7" drawText="true" checksumRequired="false">
 					<jr:codeExpression><![CDATA["100101"]]></jr:codeExpression>
 				</jr:barbecue>
 			</componentElement>
 			<componentElement>
-				<reportElement x="108" y="5" width="41" height="21" uuid="9465f2fd-e4d3-4941-aabd-90ba57f7e425"/>
+				<reportElement x="203" y="5" width="70" height="38" uuid="9465f2fd-e4d3-4941-aabd-90ba57f7e425"/>
 				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="2of7" drawText="true" checksumRequired="false">
 					<jr:codeExpression><![CDATA["100102"]]></jr:codeExpression>
 				</jr:barbecue>
 			</componentElement>
 			<componentElement>
-				<reportElement x="162" y="5" width="41" height="21" uuid="dfc462d9-2a47-4a35-a845-3032444dc75c"/>
+				<reportElement x="293" y="5" width="70" height="38" uuid="dfc462d9-2a47-4a35-a845-3032444dc75c"/>
 				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="2of7" drawText="true" checksumRequired="false">
 					<jr:codeExpression><![CDATA["100103"]]></jr:codeExpression>
 				</jr:barbecue>
 			</componentElement>
 			<componentElement>
-				<reportElement x="216" y="5" width="41" height="21" uuid="3f953be0-b29a-4930-b844-b1511c0feb01"/>
+				<reportElement x="382" y="5" width="70" height="38" uuid="3f953be0-b29a-4930-b844-b1511c0feb01"/>
 				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="2of7" drawText="true" checksumRequired="false">
 					<jr:codeExpression><![CDATA["100104"]]></jr:codeExpression>
 				</jr:barbecue>
 			</componentElement>
 			<componentElement>
-				<reportElement x="270" y="4" width="41" height="21" uuid="8dbe3505-2a9c-46d1-aa47-05f355f60897"/>
+				<reportElement x="473" y="5" width="70" height="38" uuid="8dbe3505-2a9c-46d1-aa47-05f355f60897"/>
 				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="2of7" drawText="true" checksumRequired="false">
 					<jr:codeExpression><![CDATA["100105"]]></jr:codeExpression>
 				</jr:barbecue>
 			</componentElement>
-			<line>
-				<reportElement x="0" y="1" width="318" height="1" uuid="38eba2a0-e3c9-42b6-80e7-413cd6d1c0f9"/>
-				<graphicElement>
-					<pen lineStyle="Dashed"/>
-				</graphicElement>
-			</line>
-			<line>
-				<reportElement x="1" y="27" width="317" height="1" uuid="795519df-4dce-4449-8342-906fb3b9cf5d"/>
-				<graphicElement>
-					<pen lineStyle="Dashed"/>
-				</graphicElement>
-			</line>
-			<line>
-				<reportElement x="0" y="3" width="1" height="24" uuid="fe97a631-c913-43d9-9b27-903ded1f696a"/>
-				<graphicElement>
-					<pen lineStyle="Dashed"/>
-				</graphicElement>
-			</line>
-			<line>
-				<reportElement x="50" y="4" width="1" height="24" uuid="82abbb9c-0ae1-4b79-8ddd-cbf8ad41e7f9"/>
-				<graphicElement>
-					<pen lineStyle="Dashed"/>
-				</graphicElement>
-			</line>
-			<line>
-				<reportElement x="102" y="4" width="1" height="24" uuid="9452c889-b018-47dc-b831-2e9be28d6718"/>
-				<graphicElement>
-					<pen lineStyle="Dashed"/>
-				</graphicElement>
-			</line>
-			<line>
-				<reportElement x="155" y="3" width="1" height="24" uuid="94976dcc-d903-418b-b2f5-a74c8c2d0390"/>
-				<graphicElement>
-					<pen lineStyle="Dashed"/>
-				</graphicElement>
-			</line>
-			<line>
-				<reportElement x="209" y="1" width="1" height="24" uuid="ea4ff3fb-c17a-4afe-be83-aa7e0e7af8cb"/>
-				<graphicElement>
-					<pen lineStyle="Dashed"/>
-				</graphicElement>
-			</line>
-			<line>
-				<reportElement x="263" y="4" width="1" height="24" uuid="ca113b16-a295-4e2d-89df-75d017f24384"/>
-				<graphicElement>
-					<pen lineStyle="Dashed"/>
-				</graphicElement>
-			</line>
-			<line>
-				<reportElement x="317" y="4" width="1" height="24" uuid="95835cd4-5008-4d50-835c-f9f84a9463dc"/>
-				<graphicElement>
-					<pen lineStyle="Dashed"/>
-				</graphicElement>
-			</line>
 		</band>
 	</columnHeader>
 </jasperReport>
