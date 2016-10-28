@@ -28,7 +28,7 @@ public class IndividualTraineesAttendanceTheoryClass extends javax.swing.JDialog
         String currentyear = dateFormat.format(date);
         txt_date.setText(currentyear);
         txt_admission_no.grabFocus();
-        
+
     }
 
     /**
@@ -81,6 +81,11 @@ public class IndividualTraineesAttendanceTheoryClass extends javax.swing.JDialog
 
         jLabel4.setText("Name");
 
+        txt_admission_no.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_admission_noActionPerformed(evt);
+            }
+        });
         txt_admission_no.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txt_admission_noKeyReleased(evt);
@@ -108,12 +113,12 @@ public class IndividualTraineesAttendanceTheoryClass extends javax.swing.JDialog
 
         tbl_theory.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Topic 1", "9.00AM", "10.00AM", "Mr.Pradeep"},
-                {"Topic 2", "10.00AM", "11.00AM", "Mr.Susantha"},
-                {"Topic 3", "11.00AM", "12.00", "Mr.Pradeep"},
-                {"Topic 4", "12.00PM", "1.00PM", "Mr.Pradeep"},
-                {"Topic 5", "1.00PM", "2.00PM", "Mr.Pradeep"},
-                {"Topic 6", "2.00PM", "3.00PM", "Mr.Susantha"}
+                {"Attitudes,Politeness and Responsibility of a Driver", "08.00", "09.00", "Mr.Pradeep"},
+                {"Road Signs and Markings", "09.00", "10.00", "Mr.Pradeep"},
+                {"Safety and Preventing Accidents", "10.00", "11.00", "Mr.Pradeep"},
+                {"Positioning and Using Junction", "11.30", "12.30", "Mr.Pradeep"},
+                {"Using Highways", "12.30", "13.00", "Mr.Pradeep"},
+                {"Mechanical Knowledge", "13.00", "14.00", "Mr.Pradeep"}
             },
             new String [] {
                 "Topic", "Starting Time", "Ending Time", "Name of the Lecture"
@@ -195,35 +200,12 @@ public class IndividualTraineesAttendanceTheoryClass extends javax.swing.JDialog
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-       save();
+
+        save();
     }//GEN-LAST:event_jButton1ActionPerformed
     int cus_id = 0;
     private void txt_admission_noKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_admission_noKeyReleased
-        try {
-            ResultSet rs = model.db.getData("SELECT\n"
-                    + "customer_register.id,\n"
-                    + "customer_register.barcode,\n"
-                    + "uniquecustomerdetails.namewithinitial\n"
-                    + "FROM\n"
-                    + "customer_register ,\n"
-                    + "uniquecustomerdetails\n"
-                    + "WHERE\n"
-                    + "customer_register.admission_no = '" + txt_admission_no.getText() + "' AND\n"
-                    + "customer_register.uniqueCustomerDetails_id = uniquecustomerdetails.id");
-            
-            if (rs.next()) {
-                cus_id = rs.getInt(1);
-                System.out.println("customer id" + cus_id);
-                txt_barcode.setText(rs.getString(2));
-                txt_name.setText(rs.getString(3));
-                  save();
-                
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-      
+
     }//GEN-LAST:event_txt_admission_noKeyReleased
 
     private void txt_barcodeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_barcodeKeyReleased
@@ -238,18 +220,45 @@ public class IndividualTraineesAttendanceTheoryClass extends javax.swing.JDialog
                     + "WHERE\n"
                     + "customer_register.barcode = '" + txt_barcode.getText() + "' AND\n"
                     + "customer_register.uniqueCustomerDetails_id = uniquecustomerdetails.id");
-            
+
             if (rs.next()) {
                 cus_id = rs.getInt(2);
                 System.out.println("customer id" + cus_id);
                 txt_admission_no.setText(rs.getString(1));
                 txt_name.setText(rs.getString(3));
-                
+
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }//GEN-LAST:event_txt_barcodeKeyReleased
+
+    private void txt_admission_noActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_admission_noActionPerformed
+        try {
+            ResultSet rs = model.db.getData("SELECT\n"
+                    + "customer_register.id,\n"
+                    + "customer_register.barcode,\n"
+                    + "uniquecustomerdetails.namewithinitial\n"
+                    + "FROM\n"
+                    + "customer_register ,\n"
+                    + "uniquecustomerdetails\n"
+                    + "WHERE\n"
+                    + "customer_register.admission_no = '" + txt_admission_no.getText() + "' AND\n"
+                    + "customer_register.uniqueCustomerDetails_id = uniquecustomerdetails.id");
+
+            if (rs.next()) {
+                cus_id = rs.getInt(1);
+                System.out.println("customer id" + cus_id);
+                txt_barcode.setText(rs.getString(2));
+                txt_name.setText(rs.getString(3));
+                save();
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }//GEN-LAST:event_txt_admission_noActionPerformed
 
     /**
      * @param args the command line arguments
@@ -315,9 +324,9 @@ public class IndividualTraineesAttendanceTheoryClass extends javax.swing.JDialog
 
     private boolean isDateAndAdmissionExist() {
         boolean bol = false;
-        
+
         try {
-            
+
             ResultSet rs = model.db.getData("SELECT\n"
                     + "attendance_theoryclass.date,\n"
                     + "attendance_theoryclass.admissionNo\n"
@@ -331,7 +340,7 @@ public class IndividualTraineesAttendanceTheoryClass extends javax.swing.JDialog
 //                Messages.warningjoption("Barcode Already exist! ");
 
             }
-            
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -339,49 +348,51 @@ public class IndividualTraineesAttendanceTheoryClass extends javax.swing.JDialog
     }
 
     private void save() {
-         if (txt_admission_no.getText().isEmpty() || txt_name.getText().isEmpty() || txt_date.getText().isEmpty()) {
+        if (txt_admission_no.getText().isEmpty() || txt_name.getText().isEmpty() || txt_date.getText().isEmpty()) {
             com.Messages.errorjoption("Please fill the data fields");
             txt_admission_no.grabFocus();
         } else {
-            
+
             if (isDateAndAdmissionExist()) {
                 com.Messages.errorjoption("You entered date and admission is already exist!");
             } else {
-                
+
                 try {
                     model.db.putData("INSERT INTO attendance_theoryclass(barcode,admissionNo,date,status,customer_register_id)values"
                             + "('" + txt_barcode.getText() + "','" + txt_admission_no.getText() + "','" + txt_date.getText() + "','" + 1 + "','" + cus_id + "')");
-                    
-                    
-                    int maxid=0;
+
+                    int maxid = 0;
                     ResultSet rs = model.db.getData("SELECT\n"
                             + "MAX(attendance_theoryclass.id)\n"
                             + "FROM\n"
                             + "attendance_theoryclass");
-                    
-                    if(rs.next()){
-                    maxid= rs.getInt(1);
-                    
+
+                    if (rs.next()) {
+                        maxid = rs.getInt(1);
+
                     }
                     for (int i = 0; i < tbl_theory.getRowCount(); i++) {
                         String name = tbl_theory.getValueAt(i, 0).toString();
                         String starting_time = tbl_theory.getValueAt(i, 1).toString();
                         String ending_time = tbl_theory.getValueAt(i, 2).toString();
                         String lecture_name = tbl_theory.getValueAt(i, 3).toString();
-                        
+
                         model.db.putData("INSERT INTO theory_topics(name,starting_time,end_time,lecturer_name,status,attendance_theoryclass_id)values"
                                 + "('" + name + "','" + starting_time + "','" + ending_time + "','" + lecture_name + "','" + 1 + "','" + maxid + "')");
-                        
+
                     }
-                    
+
 //                    com.Messages.normaljoption("Data saved");
-                   
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                
+
+                txt_admission_no.setText("");
+                txt_barcode.setText("");
+                txt_name.setText("");
+
             }
-            
+
         }
     }
 }

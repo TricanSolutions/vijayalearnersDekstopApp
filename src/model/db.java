@@ -14,8 +14,8 @@ public class db {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vijaya_lerners?useUnicode=true&characterEncoding=UTF-8", "root", "123");
-//             con = DriverManager.getConnection("jdbc:mysql://192.168.1.6:3306/vijaya_lerners?useUnicode=true&characterEncoding=UTF-8", "root", "123");
+//            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vijaya_lerners?useUnicode=true&characterEncoding=UTF-8", "root", "123");
+             con = DriverManager.getConnection("jdbc:mysql://192.168.1.6:3306/vijaya_lerners?useUnicode=true&characterEncoding=UTF-8", "root", "123");
             
 //            con = DriverManager.getConnection("jdbc:mysql://tricanlk_test:3306/tricanlk_test1?useUnicode=true&characterEncoding=UTF-8", "tricanlk_test1", "dalbsdms123");
         // con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vijaya_lerners?useUnicode=true&characterEncoding=UTF-8", "root", "");

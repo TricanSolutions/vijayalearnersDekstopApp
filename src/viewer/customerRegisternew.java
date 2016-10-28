@@ -47,6 +47,11 @@ public class customerRegisternew extends javax.swing.JDialog {
         loadcmbdivision();
         loadpolice();
         cmb_Customer_type.grabFocus();
+        
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = new Date();
+        String currentyear = dateFormat.format(date);
+        txt_medical_date.setText(currentyear);
 
     }
 

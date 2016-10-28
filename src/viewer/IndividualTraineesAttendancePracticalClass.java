@@ -95,6 +95,11 @@ public class IndividualTraineesAttendancePracticalClass extends javax.swing.JDia
 
         jLabel4.setText("Name");
 
+        txt_admission_no.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_admission_noActionPerformed(evt);
+            }
+        });
         txt_admission_no.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txt_admission_noKeyReleased(evt);
@@ -125,7 +130,7 @@ public class IndividualTraineesAttendancePracticalClass extends javax.swing.JDia
 
         tbl_practical.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"-", "Topic 1", "-", "-", "-", "V1", "Mr.Nimal", null},
+                {"-", "Topi 1", "-", "-", "-", "V1", "Mr.Nimal", null},
                 {"-", "Topic 2", "-", "-", "-", "V1", "Mr.Vijitha", null},
                 {"-", "Topic 3", "-", "-", "-", "V2", "Mr.Nimal", null},
                 {"-", "Topic 4", "-", "-", "-", "v3", "Mr.Nimal", null},
@@ -134,6 +139,9 @@ public class IndividualTraineesAttendancePracticalClass extends javax.swing.JDia
                 {"-", "-", "-", "-", "-", "-", "-", null},
                 {"-", "-", "-", "-", "-", "-", "-", null},
                 {"-", "-", "-", "-", "-", "-", "-", null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
@@ -298,31 +306,7 @@ public class IndividualTraineesAttendancePracticalClass extends javax.swing.JDia
     }//GEN-LAST:event_jButton1ActionPerformed
     int cus_id = 0;
     private void txt_admission_noKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_admission_noKeyReleased
-        try {
-            ResultSet rs = model.db.getData("SELECT\n"
-                    + "customer_register.id,\n"
-                    + "customer_register.barcode,\n"
-                    + "uniquecustomerdetails.namewithinitial\n"
-                    + "FROM\n"
-                    + "customer_register ,\n"
-                    + "uniquecustomerdetails\n"
-                    + "WHERE\n"
-                    + "customer_register.admission_no = '" + txt_admission_no.getText() + "' AND\n"
-                    + "customer_register.uniqueCustomerDetails_id = uniquecustomerdetails.id");
-
-            if (rs.next()) {
-                cus_id = rs.getInt(1);
-                System.out.println("customer id" + cus_id);
-                txt_barcode.setText(rs.getString(2));
-                txt_name.setText(rs.getString(3));
-                student_practicale_attend();
-                insertandupdate();
-//                jButton1.grabFocus();
-
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        
 
 
     }//GEN-LAST:event_txt_admission_noKeyReleased
@@ -432,6 +416,34 @@ public class IndividualTraineesAttendancePracticalClass extends javax.swing.JDia
 
         }
     }//GEN-LAST:event_jButton1KeyPressed
+
+    private void txt_admission_noActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_admission_noActionPerformed
+       try {
+            ResultSet rs = model.db.getData("SELECT\n"
+                    + "customer_register.id,\n"
+                    + "customer_register.barcode,\n"
+                    + "uniquecustomerdetails.namewithinitial\n"
+                    + "FROM\n"
+                    + "customer_register ,\n"
+                    + "uniquecustomerdetails\n"
+                    + "WHERE\n"
+                    + "customer_register.admission_no = '" + txt_admission_no.getText() + "' AND\n"
+                    + "customer_register.uniqueCustomerDetails_id = uniquecustomerdetails.id");
+
+            if (rs.next()) {
+                cus_id = rs.getInt(1);
+                System.out.println("customer id" + cus_id);
+                txt_barcode.setText(rs.getString(2));
+                txt_name.setText(rs.getString(3));
+                student_practicale_attend();
+                insertandupdate();
+//                jButton1.grabFocus();
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_txt_admission_noActionPerformed
 
     /**
      * @param args the command line arguments
@@ -626,13 +638,17 @@ public class IndividualTraineesAttendancePracticalClass extends javax.swing.JDia
 
         dtm.setRowCount(0);
         for (int i = 0; i < 20; i++) {
-            String date[] = {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"};
-            String topic[] = {"topic_1", "topic_2", "topic_3", "topic_4", "topic_5", "topic_6", "topic_7", "topic_8", "topic_9", "topic_10", "topic_11", "topic_12", "topic_13", "topic_14", "topic_15", "topic_16", "topic_17", "topic_18", "topic_19", "topic_20"};
-            String starting_time[] = {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"};
-            String ending_time[] = {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"};
-            String duration[] = {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"};
-            String vehicle[] = {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"};
-            String instructor[] = {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"};
+            String date[] = {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"};
+            String topic[] = {"Manual Stimulator(Indoor)", "Move Over and Stopping", "Move Over and Stopping", "Clutch Balancing", "Shifting Gears", 
+                "Using Mirrors and Hand Signals", "Obsservation/Dicisions", "Positioning and Parking", "Reversing Straight", "Using Round About", "Reversing 90",
+                "Driving in Traffic", "Turning to a by Road", "Entering to a main road", "Overtaking", "Reversing and Parking", "Using Junctions",
+                "Starting and Move over(3 Wheeler)", "Positioning/Junctions(3 Wheeler)", "Reversing(3 Wheeler)","Move Over and Stopping(M Cycle)",
+                "Zig Zag and 8(M Cycle)","Zig Zag and 8(M Cycle)"};
+            String starting_time[] = {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"};
+            String ending_time[] = {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"};
+            String duration[] = {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"};
+            String vehicle[] = {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"};
+            String instructor[] = {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"};
 
             Object arr[] = {date[i], topic[i], starting_time[i], ending_time[i], duration[i], vehicle[i], instructor[i]};
             dtm.addRow(arr);

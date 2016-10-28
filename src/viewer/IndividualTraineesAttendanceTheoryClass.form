@@ -158,6 +158,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txt_admission_no">
           <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_admission_noActionPerformed"/>
             <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_admission_noKeyReleased"/>
           </Events>
         </Component>
@@ -200,36 +201,36 @@
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="4" rowCount="6">
                     <Column editable="true" title="Topic" type="java.lang.Object">
-                      <Data value="Topic 1"/>
-                      <Data value="Topic 2"/>
-                      <Data value="Topic 3"/>
-                      <Data value="Topic 4"/>
-                      <Data value="Topic 5"/>
-                      <Data value="Topic 6"/>
+                      <Data value="Attitudes,Politeness and Responsibility of a Driver"/>
+                      <Data value="Road Signs and Markings"/>
+                      <Data value="Safety and Preventing Accidents"/>
+                      <Data value="Positioning and Using Junction"/>
+                      <Data value="Using Highways"/>
+                      <Data value="Mechanical Knowledge"/>
                     </Column>
                     <Column editable="true" title="Starting Time" type="java.lang.Object">
-                      <Data value="9.00AM"/>
-                      <Data value="10.00AM"/>
-                      <Data value="11.00AM"/>
-                      <Data value="12.00PM"/>
-                      <Data value="1.00PM"/>
-                      <Data value="2.00PM"/>
+                      <Data value="08.00"/>
+                      <Data value="09.00"/>
+                      <Data value="10.00"/>
+                      <Data value="11.30"/>
+                      <Data value="12.30"/>
+                      <Data value="13.00"/>
                     </Column>
                     <Column editable="true" title="Ending Time" type="java.lang.Object">
-                      <Data value="10.00AM"/>
-                      <Data value="11.00AM"/>
-                      <Data value="12.00"/>
-                      <Data value="1.00PM"/>
-                      <Data value="2.00PM"/>
-                      <Data value="3.00PM"/>
+                      <Data value="09.00"/>
+                      <Data value="10.00"/>
+                      <Data value="11.00"/>
+                      <Data value="12.30"/>
+                      <Data value="13.00"/>
+                      <Data value="14.00"/>
                     </Column>
                     <Column editable="true" title="Name of the Lecture" type="java.lang.Object">
                       <Data value="Mr.Pradeep"/>
-                      <Data value="Mr.Susantha"/>
                       <Data value="Mr.Pradeep"/>
                       <Data value="Mr.Pradeep"/>
                       <Data value="Mr.Pradeep"/>
-                      <Data value="Mr.Susantha"/>
+                      <Data value="Mr.Pradeep"/>
+                      <Data value="Mr.Pradeep"/>
                     </Column>
                   </Table>
                 </Property>
