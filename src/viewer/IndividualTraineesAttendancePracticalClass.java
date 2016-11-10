@@ -547,7 +547,7 @@ public class IndividualTraineesAttendancePracticalClass extends javax.swing.JDia
         DefaultTableModel dtm = (DefaultTableModel) tbl_practical.getModel();
         String val1 = "";
         int i = 0;
-        if (!txt_barcode.getText().isEmpty()) {
+//        if (!txt_barcode.getText().isEmpty()) {
             for (i = 0; i < dtm.getRowCount(); i++) {
                 val1 = (String) dtm.getValueAt(i, 0);
                 System.out.println(val1);
@@ -567,11 +567,12 @@ public class IndividualTraineesAttendancePracticalClass extends javax.swing.JDia
 
             }
 
-        } else {
-            com.Messages.errorjoption("Enter Barcode");
-            return;
-
-        }
+//        } 
+//        else {
+//            com.Messages.errorjoption("Enter Barcode");
+//            return;
+//
+//        }
     }
     String currenttime = "";
     String endtime;
@@ -880,7 +881,7 @@ public class IndividualTraineesAttendancePracticalClass extends javax.swing.JDia
                     String afteraddition = format.format(new Date(addition));
                     System.out.println(afteraddition);
                     if (addition < now ) {
-                        System.out.println("still cant");
+                        System.out.println("still cannot");
                         bol = false;
 
                     } else if (addition > now ) {

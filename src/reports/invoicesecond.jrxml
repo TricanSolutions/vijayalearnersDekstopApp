@@ -176,7 +176,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Batang" size="8"/>
 				</textElement>
-				<text><![CDATA[System By Lasitha - 071 24 70 399]]></text>
+				<text><![CDATA[System By Trican Solutions(www.trican.lk)]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="83" y="146" width="76" height="14" uuid="5cb634e2-8a4a-40fc-8fd1-da94b0b85998"/>

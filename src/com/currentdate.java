@@ -13,4 +13,11 @@ package com;
 public class currentdate {
     
     public static String currentdate1;
+    public static String getselected_calenderdate;
+    public static String time_duration;
+    
+    
+    
+    
+   
 }

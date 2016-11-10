@@ -5,7 +5,7 @@
 	<property name="ireport.y" value="0"/>
 	<parameter name="admission_no" class="java.lang.String"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
-		<defaultValueExpression><![CDATA["C:\\soft\\vijayalearnersDekstopApp\\src\\reports\\"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["src\\reports\\"]]></defaultValueExpression>
 	</parameter>
 	<queryString>
 		<![CDATA[SELECT

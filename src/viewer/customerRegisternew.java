@@ -1102,6 +1102,7 @@ public class customerRegisternew extends javax.swing.JDialog {
     private void txtlicendateKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtlicendateKeyPressed
         if (evt.getKeyCode() == 10) {
             txtlicenvclass.grabFocus();
+            txtlicenvclass.selectAll();
         }
     }//GEN-LAST:event_txtlicendateKeyPressed
 

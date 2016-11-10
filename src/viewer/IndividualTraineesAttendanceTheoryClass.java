@@ -234,6 +234,7 @@ public class IndividualTraineesAttendanceTheoryClass extends javax.swing.JDialog
     }//GEN-LAST:event_txt_barcodeKeyReleased
 
     private void txt_admission_noActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_admission_noActionPerformed
+      
         try {
             ResultSet rs = model.db.getData("SELECT\n"
                     + "customer_register.id,\n"
@@ -333,7 +334,7 @@ public class IndividualTraineesAttendanceTheoryClass extends javax.swing.JDialog
                     + "FROM\n"
                     + "attendance_theoryclass\n"
                     + "WHERE\n"
-                    + "attendance_theoryclass.date = '" + txt_date.getText() + "' AND\n"
+                    
                     + "attendance_theoryclass.admissionNo = '" + txt_admission_no.getText() + "'");
             if (rs.next()) {
                 bol = true;
@@ -355,6 +356,7 @@ public class IndividualTraineesAttendanceTheoryClass extends javax.swing.JDialog
 
             if (isDateAndAdmissionExist()) {
                 com.Messages.errorjoption("You entered date and admission is already exist!");
+                txt_admission_no.selectAll();
             } else {
 
                 try {
@@ -394,5 +396,30 @@ public class IndividualTraineesAttendanceTheoryClass extends javax.swing.JDialog
             }
 
         }
+    }
+
+    private boolean isALreadyExistadmission() {
+        boolean bol = false;
+        try {
+            ResultSet rs = model.db.getData("SELECT\n"
+                    + "attendance_theoryclass.admissionNo\n"
+                    + "FROM\n"
+                    + "attendance_theoryclass\n"
+                    + "WHERE\n"
+                    + "attendance_theoryclass.admissionNo = '"+txt_admission_no.getText().trim()+"'");
+            if (rs.next()) {
+//                practical_topic_id = rs.getInt(2);
+//                com.Messages.normaljoption("practical_topic_id " + practical_topic_id);
+                bol = true;
+//                Messages.errorjoption("This NIC Number Already Exist ! ");
+//                txtnic.grabFocus();
+//                txtnic.selectAll();
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return bol;
     }
 }
